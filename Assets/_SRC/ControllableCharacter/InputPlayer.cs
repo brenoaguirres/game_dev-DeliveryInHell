@@ -7,8 +7,6 @@ public class InputPlayer : MonoBehaviour
 {
     #region FIELDS
     private PlayerInputActions inputs;
-    private Vector2 movementInput;
-    private float movementVertical = 0;
     private float movementHorizontal = 0;
     private float jump = 0;
     private bool run = false;
@@ -69,17 +67,18 @@ public class InputPlayer : MonoBehaviour
     #region CUSTOM METHODS
     private void MovementInput(InputAction.CallbackContext context)
     {
-        movementInput = context.ReadValue<Vector2>();
-        movementVertical = movementInput.y;
-        movementHorizontal = movementInput.x;
+        movementHorizontal = context.ReadValue<float>();
+        Debug.Log(movementHorizontal);
     }
     private void JumpInput(InputAction.CallbackContext context)
     {
-        jump = context.ReadValue<float>(); 
+        jump = context.ReadValue<float>();
+        Debug.Log(jump);
     }
     private void RunInput(InputAction.CallbackContext context)
     {
-        run = context.ReadValue<bool>();
+        run = context.ReadValueAsButton();
+        Debug.Log(run);
     }
     #endregion
 }

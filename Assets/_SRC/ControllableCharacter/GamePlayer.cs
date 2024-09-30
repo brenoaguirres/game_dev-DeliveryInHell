@@ -89,7 +89,7 @@ namespace CBPXL.ControllableCharacter
         #region CLASS METHODS
         private void SetupPlayer()
         {
-            input = GetComponent<InputPlayer>();
+            input = GetComponentInChildren<InputPlayer>();
         }
         private void UpdateInput()
         {
