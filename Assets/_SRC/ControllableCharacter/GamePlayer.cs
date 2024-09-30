@@ -42,6 +42,7 @@ namespace CBPXL.ControllableCharacter
         #endregion
 
         #region REFERENCES
+        private InputPlayer input;
         #endregion
 
         #region STATE MACHINE
@@ -69,7 +70,7 @@ namespace CBPXL.ControllableCharacter
         #region DEFAULT METHODS
         private void Start()
         {
-            
+            SetupPlayer();
         }
         private void Update()
         {
@@ -86,9 +87,15 @@ namespace CBPXL.ControllableCharacter
         #endregion
 
         #region CLASS METHODS
+        private void SetupPlayer()
+        {
+            input = GetComponent<InputPlayer>();
+        }
         private void UpdateInput()
         {
-
+            walkInput = input.MovementHorizontal;
+            jumpInput = input.Jump;
+            runInput = input.Run;
         }
         private void UpdateFlags()
         {
