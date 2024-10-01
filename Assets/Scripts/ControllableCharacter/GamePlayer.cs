@@ -21,6 +21,9 @@ namespace CBPXL.ControllableCharacter
         private bool canJump = false;
         private bool isGrounded = true;
         [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private float maxGroundCheckDist = 1f;
+        [Tooltip("The position in which the character's feet is located.")]
+        [SerializeField] private Transform basePosition;
 
         [Space(2)]
         [Header("Crouch")]
@@ -62,6 +65,7 @@ namespace CBPXL.ControllableCharacter
             RUNNING_RIGHT,
             SKIDDING,
         }
+        MovePhases movePhases;
         private enum JumpPhases
         {
             GROUND,
@@ -69,6 +73,7 @@ namespace CBPXL.ControllableCharacter
             MAX_HEIGHT,
             FALLING,
         }
+        [SerializeField] JumpPhases jumpPhases;
         #endregion
 
         #region EVENTS
@@ -123,11 +128,12 @@ namespace CBPXL.ControllableCharacter
         }
         private void UpdateMovement()
         {
+            // checking direction && if its running
             float currentSpeed = isRunning ? runSpeed : walkSpeed;
-
             Vector3 moveDirection = Vector3.right * walkInput;
             Vector3 newPosition = transform.position + moveDirection * currentSpeed * Time.fixedDeltaTime;
 
+            // apply pos && rot
             physics.MovePosition(newPosition);
 
             if (walkInput > 0.1f)
@@ -143,7 +149,54 @@ namespace CBPXL.ControllableCharacter
         }
         private void UpdateJump()
         {
+            // checking jump conditions
+            RaycastHit hit;
+            canJump = false;
+            if (Physics.Raycast(basePosition.position, -basePosition.up, out hit, maxGroundCheckDist, groundLayer))
+            {
+                jumpPhases = JumpPhases.GROUND;
+                isGrounded = true;
+            }
+            if (isGrounded && jumpInput > 0.1f)
+                canJump = true;
 
+            // jump start
+            if (canJump)
+            {
+                jumpPhases = JumpPhases.IMPULSE;
+            }
+
+            // jump mid-air
+            if (jumpPhases == JumpPhases.IMPULSE && jumpInput >= 0.1f)
+            {
+                currentJumpForce = Mathf.Lerp(currentJumpForce, maxJumpForce, maxJumpTime);
+                physics.AddForce(Vector3.up * currentJumpForce, ForceMode.VelocityChange);
+            }
+
+            // jump max-height reached
+            if (currentJumpForce >= maxJumpForce)
+            {
+                jumpPhases = JumpPhases.MAX_HEIGHT;
+            }
+
+            // jump inertia
+            if(jumpPhases == JumpPhases.MAX_HEIGHT)
+            {
+                currentJumpForce = Mathf.Lerp(currentJumpForce, 0, maxJumpTime);
+                physics.AddForce(Vector3.up * currentJumpForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
+            }
+
+            // jump inertia over
+            if (currentJumpForce <= 0 && !isGrounded)
+            {
+                jumpPhases = JumpPhases.FALLING;
+            }
+
+            // jump fall
+            if (jumpPhases != JumpPhases.FALLING)
+            {
+                physics.AddForce(-Vector3.up * 9.5f * Time.fixedDeltaTime, ForceMode.Acceleration);
+            }
         }
         private void UpdateAttack(bool aim, bool shoot, float look)
         {
