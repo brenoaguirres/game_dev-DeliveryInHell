@@ -1,4 +1,7 @@
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace CBPXL.ControllableCharacter
 {
@@ -59,8 +62,8 @@ namespace CBPXL.ControllableCharacter
         private enum MovePhases
         {
             IDLE,
-            MOVING_LEFT,
-            MOVING_RIGHT,
+            WALKING_LEFT,
+            WALKING_RIGHT,
             RUNNING_LEFT,
             RUNNING_RIGHT,
             SKIDDING,
@@ -152,6 +155,7 @@ namespace CBPXL.ControllableCharacter
             // checking jump conditions
             RaycastHit hit;
             canJump = false;
+            isGrounded = false;
             if (Physics.Raycast(basePosition.position, -basePosition.up, out hit, maxGroundCheckDist, groundLayer))
             {
                 jumpPhases = JumpPhases.GROUND;
@@ -159,6 +163,7 @@ namespace CBPXL.ControllableCharacter
             }
             if (isGrounded && jumpInput > 0.1f)
                 canJump = true;
+            Debug.DrawRay(basePosition.position, -basePosition.up, Color.magenta, maxGroundCheckDist);
 
             // jump start
             if (canJump)
@@ -190,12 +195,13 @@ namespace CBPXL.ControllableCharacter
             if (currentJumpForce <= 0 && !isGrounded)
             {
                 jumpPhases = JumpPhases.FALLING;
+                //physics.linearVelocity = new Vector3(physics.linearVelocity.x, 0, physics.linearVelocity.z);
             }
 
             // jump fall
             if (jumpPhases != JumpPhases.FALLING)
             {
-                physics.AddForce(-Vector3.up * 9.5f * Time.fixedDeltaTime, ForceMode.Acceleration);
+                
             }
         }
         private void UpdateAttack(bool aim, bool shoot, float look)
