@@ -3,8 +3,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
     public abstract class ControllableCharacterState
     {
         #region FIELDS
-        protected ControllableCharacterStateMachine _ctx;
-        protected ControllableCharacterStateFactory _factory;
+        private ControllableCharacterStateMachine _ctx;
+        private ControllableCharacterStateFactory _factory;
         protected ControllableCharacterState _currentSubState;
         protected ControllableCharacterState _currentSuperState;
 

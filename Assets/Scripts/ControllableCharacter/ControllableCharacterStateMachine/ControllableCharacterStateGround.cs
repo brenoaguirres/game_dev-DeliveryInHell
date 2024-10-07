@@ -27,25 +27,25 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void CheckSwitchStates()
         {
-            if (_ctx.Input.JumpInput)
+            if (Ctx.Input.JumpInput)
             {
-                SwitchState(_factory.Jump());
+                SwitchState(Factory.Jump());
             }
         }
 
         public override void InitializeSubState()
         {
-            if (!_ctx.Input.HorizontalInput && !_ctx.Input.RunInput)
+            if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
             {
-                SetSubState(_factory.Idle());
+                SetSubState(Factory.Idle());
             }
-            else if (_ctx.Input.HorizontalInput && !_ctx.Input.RunInput)
+            else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
             {
-                SetSubState(_factory.Walk());
+                SetSubState(Factory.Walk());
             }
             else
             {
-                SetSubState(_factory.Run());
+                SetSubState(Factory.Run());
             }
         }
         #endregion

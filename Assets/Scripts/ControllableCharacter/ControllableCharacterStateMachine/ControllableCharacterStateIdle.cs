@@ -28,13 +28,13 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void CheckSwitchStates()
         {
-            if (_ctx.Input.HorizontalInput && !_ctx.Input.RunInput)
+            if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
             {
-                SetSubState(_factory.Walk());
+                SetSubState(Factory.Walk());
             }
             else
             {
-                SetSubState(_factory.Run());
+                SetSubState(Factory.Run());
             }
         }
 

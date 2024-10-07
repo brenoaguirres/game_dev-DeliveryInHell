@@ -11,7 +11,7 @@ namespace CBPXL.ControllableCharacter
         private PlayerInputActions inputs;
         private float movementHorizontal = 0;
         private float movementVertical = 0;
-        private float jump = 0;
+        private bool jump = false;
         private bool run = false;
         private bool aim = false;
         private bool shoot = false;
@@ -20,7 +20,7 @@ namespace CBPXL.ControllableCharacter
         #region PROPERTIES
         public float MovementHorizontal { get => movementHorizontal; }
         public float MovementVertical { get => movementVertical; }
-        public float Jump { get => jump; }
+        public bool Jump { get => jump; }
         public bool Run { get => run; }
         public bool Aim { get => aim; }
         public bool Shoot { get => shoot; }
@@ -113,7 +113,7 @@ namespace CBPXL.ControllableCharacter
         }
         private void JumpInput(InputAction.CallbackContext context)
         {
-            jump = context.ReadValue<float>();
+            jump = context.ReadValueAsButton();
         }
         private void RunInput(InputAction.CallbackContext context)
         {

@@ -1,13 +1,22 @@
-using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
+using CBPXLStateMachine = CBPXL.ControllableCharacter.ControllableCharacterStateMachine;
+using System;
+using UnityEditor;
 
 namespace CBPXL.ControllableCharacter
 {
     public class GamePlayer : MonoBehaviour
     {
         #region FIELDS
+        [Header("Settings")]
+        [SerializeField] private ControllableCharacterData _playerData;
+        [SerializeField] private ControllableCharacterDataInput _inputData;
+        [SerializeField] private string _dataAssetPath = "ControllableCharacterData/Data";
+        [SerializeField] private string _inputAssetPath = "ControllableCharacterData/InputData";
+
+        [Space(2)]
         [Header("Movement")]
         [SerializeField] private float walkSpeed = 5f;
         [SerializeField] private float runSpeed = 10f;
@@ -56,27 +65,9 @@ namespace CBPXL.ControllableCharacter
 
         private AttackPlayer attack;
         private InputPlayer input;
-        #endregion
 
-        #region STATE MACHINE
-        private enum MovePhases
-        {
-            IDLE,
-            WALKING_LEFT,
-            WALKING_RIGHT,
-            RUNNING_LEFT,
-            RUNNING_RIGHT,
-            SKIDDING,
-        }
-        MovePhases movePhases;
-        private enum JumpPhases
-        {
-            GROUND,
-            IMPULSE,
-            MAX_HEIGHT,
-            FALLING,
-        }
-        [SerializeField] JumpPhases jumpPhases;
+        [Header("State")]
+        private CBPXLStateMachine.ControllableCharacterStateMachine _stateMachine;
         #endregion
 
         #region EVENTS
@@ -110,20 +101,55 @@ namespace CBPXL.ControllableCharacter
         #region CLASS METHODS
         private void SetupPlayer()
         {
+            // References Setup
             physics = GetComponent<Rigidbody>();
             animator = GetComponentInChildren<Animator>();
 
-            input = GetComponentInChildren<InputPlayer>();
+            input = GetComponent<InputPlayer>();
             attack = GetComponentInChildren<AttackPlayer>();
+
+            // StateMachine Setup
+            _stateMachine = GetComponent<CBPXLStateMachine.ControllableCharacterStateMachine>();
+
+            // Data Setup
+            if (_playerData == null)
+            {
+                try
+                {
+                    _playerData = Resources.Load(_dataAssetPath) as ControllableCharacterData;
+                }
+                catch (Exception e)
+                {
+                    _playerData = new ControllableCharacterData();
+                    AssetDatabase.CreateAsset(_playerData, "Resources/" + _dataAssetPath);
+                    AssetDatabase.SaveAssets();
+                }
+            }
+            if (_inputData == null)
+            {
+                try
+                {
+                    _inputData = Resources.Load(_inputAssetPath) as ControllableCharacterDataInput;
+                }
+                catch (Exception e)
+                {
+                    _inputData = new ControllableCharacterDataInput();
+                    AssetDatabase.CreateAsset(_inputData, "Resources/" + _inputAssetPath);
+                    AssetDatabase.SaveAssets();
+                }
+            }
+
+            _stateMachine.Data = _playerData;
+            _stateMachine.Input = _inputData;
         }
         private void UpdateInput()
         {
-            walkInput = input.MovementHorizontal;
-            lookInput = input.MovementVertical;
-            jumpInput = input.Jump;
-            runInput = input.Run;
-            aimInput = input.Aim;
-            shootInput = input.Shoot;
+            _inputData.HorizontalInput = input.MovementHorizontal;
+            _inputData.VerticalInput = input.MovementVertical;
+            _inputData.JumpInput = input.Jump;
+            _inputData.RunInput = input.Run;
+            _inputData.AimInput = input.Aim;
+            _inputData.ShootInput = input.Shoot;
         }
         private void UpdateFlags()
         {
@@ -152,57 +178,57 @@ namespace CBPXL.ControllableCharacter
         }
         private void UpdateJump()
         {
-            // checking jump conditions
-            RaycastHit hit;
-            canJump = false;
-            isGrounded = false;
-            if (Physics.Raycast(basePosition.position, -basePosition.up, out hit, maxGroundCheckDist, groundLayer))
-            {
-                jumpPhases = JumpPhases.GROUND;
-                isGrounded = true;
-            }
-            if (isGrounded && jumpInput > 0.1f)
-                canJump = true;
-            Debug.DrawRay(basePosition.position, -basePosition.up, Color.magenta, maxGroundCheckDist);
+            //// checking jump conditions
+            //RaycastHit hit;
+            //canJump = false;
+            //isGrounded = false;
+            //if (Physics.Raycast(basePosition.position, -basePosition.up, out hit, maxGroundCheckDist, groundLayer))
+            //{
+            //    jumpPhases = JumpPhases.GROUND;
+            //    isGrounded = true;
+            //}
+            //if (isGrounded && jumpInput > 0.1f)
+            //    canJump = true;
+            //Debug.DrawRay(basePosition.position, -basePosition.up, Color.magenta, maxGroundCheckDist);
 
-            // jump start
-            if (canJump)
-            {
-                jumpPhases = JumpPhases.IMPULSE;
-            }
+            //// jump start
+            //if (canJump)
+            //{
+            //    jumpPhases = JumpPhases.IMPULSE;
+            //}
 
-            // jump mid-air
-            if (jumpPhases == JumpPhases.IMPULSE && jumpInput >= 0.1f)
-            {
-                currentJumpForce = Mathf.Lerp(currentJumpForce, maxJumpForce, maxJumpTime);
-                physics.AddForce(Vector3.up * currentJumpForce, ForceMode.VelocityChange);
-            }
+            //// jump mid-air
+            //if (jumpPhases == JumpPhases.IMPULSE && jumpInput >= 0.1f)
+            //{
+            //    currentJumpForce = Mathf.Lerp(currentJumpForce, maxJumpForce, maxJumpTime);
+            //    physics.AddForce(Vector3.up * currentJumpForce, ForceMode.VelocityChange);
+            //}
 
-            // jump max-height reached
-            if (currentJumpForce >= maxJumpForce)
-            {
-                jumpPhases = JumpPhases.MAX_HEIGHT;
-            }
+            //// jump max-height reached
+            //if (currentJumpForce >= maxJumpForce)
+            //{
+            //    jumpPhases = JumpPhases.MAX_HEIGHT;
+            //}
 
-            // jump inertia
-            if(jumpPhases == JumpPhases.MAX_HEIGHT)
-            {
-                currentJumpForce = Mathf.Lerp(currentJumpForce, 0, maxJumpTime);
-                physics.AddForce(Vector3.up * currentJumpForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
-            }
+            //// jump inertia
+            //if(jumpPhases == JumpPhases.MAX_HEIGHT)
+            //{
+            //    currentJumpForce = Mathf.Lerp(currentJumpForce, 0, maxJumpTime);
+            //    physics.AddForce(Vector3.up * currentJumpForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
+            //}
 
-            // jump inertia over
-            if (currentJumpForce <= 0 && !isGrounded)
-            {
-                jumpPhases = JumpPhases.FALLING;
-                //physics.linearVelocity = new Vector3(physics.linearVelocity.x, 0, physics.linearVelocity.z);
-            }
+            //// jump inertia over
+            //if (currentJumpForce <= 0 && !isGrounded)
+            //{
+            //    jumpPhases = JumpPhases.FALLING;
+            //    //physics.linearVelocity = new Vector3(physics.linearVelocity.x, 0, physics.linearVelocity.z);
+            //}
 
-            // jump fall
-            if (jumpPhases != JumpPhases.FALLING)
-            {
+            //// jump fall
+            //if (jumpPhases != JumpPhases.FALLING)
+            //{
                 
-            }
+            //}
         }
         private void UpdateAttack(bool aim, bool shoot, float look)
         {

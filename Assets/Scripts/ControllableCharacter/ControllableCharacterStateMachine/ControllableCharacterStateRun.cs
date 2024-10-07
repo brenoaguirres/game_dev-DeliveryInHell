@@ -26,13 +26,13 @@ public class ControllableCharacterStateRun : ControllableCharacterState
 
     public override void CheckSwitchStates()
     {
-        if (!_ctx.Input.HorizontalInput)
+        if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
         {
-            SetSubState(_factory.Idle());
+            SetSubState(Factory.Idle());
         }
-        else if (_ctx.Input.HorizontalInput && !_ctx.Input.RunInput)
+        else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
         {
-            SetSubState(_factory.Walk());
+            SetSubState(Factory.Walk());
         }
     }
 

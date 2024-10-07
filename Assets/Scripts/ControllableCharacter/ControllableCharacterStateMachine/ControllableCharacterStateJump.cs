@@ -33,7 +33,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             if (_isGrounded)
             {
-                SwitchState(_factory.Ground());
+                SwitchState(Factory.Ground());
             }
         }
 
