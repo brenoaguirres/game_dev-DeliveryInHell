@@ -29,6 +29,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             return new ControllableCharacterStateWalk(_context, this);
         }
 
+        public ControllableCharacterState Run()
+        {
+            return new ControllableCharacterStateRun(_context, this);
+        }
+
         public ControllableCharacterState Jump()
         {
             return new ControllableCharacterStateJump(_context, this);
@@ -39,6 +44,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             return new ControllableCharacterStateGround(_context, this);
         }
 
+        public ControllableCharacterState Fall()
+        {
+            return new ControllableCharacterStateFall(_context, this);
+        }
+        
         public ControllableCharacterState Aim()
         {
             return new ControllableCharacterStateAim(_context, this);

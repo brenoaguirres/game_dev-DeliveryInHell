@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="74308234-1891-4798-bb25-7e695d2ae437" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterDataInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterDataInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateAim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateAim.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateGround.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateGround.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateIdle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateIdle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateJump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateWalk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateWalk.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +27,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterDataInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateRun.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -98,7 +106,10 @@
       <workItem from="1727882539325" duration="89000" />
       <workItem from="1727882766277" duration="1221000" />
       <workItem from="1728150704061" duration="2104000" />
-      <workItem from="1728160619183" duration="941000" />
+      <workItem from="1728160619183" duration="1202000" />
+      <workItem from="1728165751097" duration="788000" />
+      <workItem from="1728235760398" duration="1082000" />
+      <workItem from="1728268160286" duration="846000" />
     </task>
     <servers />
   </component>
