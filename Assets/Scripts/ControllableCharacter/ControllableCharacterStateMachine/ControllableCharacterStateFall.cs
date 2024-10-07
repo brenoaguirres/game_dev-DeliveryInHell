@@ -7,6 +7,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public ControllableCharacterStateFall(ControllableCharacterStateMachine currentContext,
             ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
         {
+            _isRootState = true;
             InitializeSubState();
         }
 

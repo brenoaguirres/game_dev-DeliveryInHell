@@ -66,7 +66,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         private void Update()
         {
-
+            _currentState.UpdateStates();
         }
 
         #endregion

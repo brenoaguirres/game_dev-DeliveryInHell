@@ -7,6 +7,14 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         protected ControllableCharacterStateFactory _factory;
         protected ControllableCharacterState _currentSubState;
         protected ControllableCharacterState _currentSuperState;
+
+        protected bool _isRootState = false;
+        #endregion
+
+        #region PROPERTIES
+        public bool IsRootState { get { return _isRootState; } }
+        public ControllableCharacterStateMachine Ctx { get { return _ctx; } }
+        public ControllableCharacterStateFactory Factory { get { return _factory; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -33,13 +41,26 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         #region CONCRETE METHODS
         public void UpdateStates()
         {
+            UpdateState();
+            if (_currentSubState != null)
+            {
+                _currentSubState.UpdateStates();
+            }
         }
 
         protected void SwitchState(ControllableCharacterState newState)
         {
             ExitState();
             newState.EnterState();
-            _ctx.CurrentState = newState;
+
+            if (_isRootState)
+            {
+                _ctx.CurrentState = newState;
+            }
+            else if (_currentSuperState != null)
+            {
+                _currentSubState.SetSubState(newState);
+            }
         }
 
         public void SetSuperState(ControllableCharacterState newSuperState)

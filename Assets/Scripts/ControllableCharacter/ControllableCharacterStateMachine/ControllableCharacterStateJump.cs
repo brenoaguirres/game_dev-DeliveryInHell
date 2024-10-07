@@ -10,6 +10,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public ControllableCharacterStateJump(ControllableCharacterStateMachine currentContext,
             ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
         {
+            _isRootState = true;
+            InitializeSubState();
         }
         #endregion
 
