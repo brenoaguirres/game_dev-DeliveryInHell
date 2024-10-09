@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
     public class ControllableCharacterStateGround : ControllableCharacterState
@@ -14,11 +16,12 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         #region STATE METHODS
         public override void EnterState()
         {
+
         }
         
         public override void UpdateState()
         {
-            
+            CheckSwitchStates();
         }
         public override void FixedUpdateState()
         {
@@ -46,7 +49,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SetSubState(Factory.Walk());
             }
-            else
+            else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && Ctx.Input.RunInput)
             {
                 SetSubState(Factory.Run());
             }

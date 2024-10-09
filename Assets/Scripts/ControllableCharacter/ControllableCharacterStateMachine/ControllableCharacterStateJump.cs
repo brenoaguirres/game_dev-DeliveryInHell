@@ -2,10 +2,6 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
     public class ControllableCharacterStateJump : ControllableCharacterState
     {
-        #region FIELDS
-        private bool _isGrounded;
-        #endregion
-        
         #region CONSTRUCTOR
         public ControllableCharacterStateJump(ControllableCharacterStateMachine currentContext,
             ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
@@ -22,7 +18,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         
         public override void UpdateState()
         {
-            
+            CheckSwitchStates();
         }
 
         public override void FixedUpdateState()
@@ -35,7 +31,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void CheckSwitchStates()
         {
-            if (_isGrounded)
+            if (Ctx.Data.IsGrounded)
             {
                 SwitchState(Factory.Ground());
             }

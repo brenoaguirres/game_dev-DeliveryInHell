@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
     public abstract class ControllableCharacterState
@@ -55,7 +57,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             FixedUpdateState();
             if (_currentSubState != null)
             {
-                _currentSubState.FixedUpdateState();
+                _currentSubState.FixedUpdateStates();
             }
         }
 
@@ -70,7 +72,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             }
             else if (_currentSuperState != null)
             {
-                _currentSubState.SetSubState(newState);
+                _currentSuperState.SetSubState(newState);
             }
         }
 

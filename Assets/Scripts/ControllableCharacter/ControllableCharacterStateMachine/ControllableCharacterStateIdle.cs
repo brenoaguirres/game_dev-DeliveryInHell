@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
     public class ControllableCharacterStateIdle : ControllableCharacterState
@@ -19,7 +21,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         
         public override void UpdateState()
         {
-            
+            CheckSwitchStates();
         }
 
         public override void FixedUpdateState()
@@ -36,7 +38,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SetSubState(Factory.Walk());
             }
-            else
+            else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && Ctx.Input.RunInput)
             {
                 SetSubState(Factory.Run());
             }

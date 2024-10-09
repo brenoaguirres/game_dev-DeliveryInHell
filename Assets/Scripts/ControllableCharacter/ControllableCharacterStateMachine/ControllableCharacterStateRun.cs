@@ -17,11 +17,12 @@ public class ControllableCharacterStateRun : ControllableCharacterState
         
     public override void UpdateState()
     {
+        CheckSwitchStates();
     }
 
     public override void FixedUpdateState()
     {
-        UpdateMovement(Ctx.Data.WalkSpeed);
+        UpdateMovement(Ctx.Data.RunSpeed);
     }
 
     public override void ExitState()

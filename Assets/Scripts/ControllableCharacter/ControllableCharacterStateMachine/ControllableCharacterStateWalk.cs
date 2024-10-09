@@ -21,6 +21,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void UpdateState()
         {
+            CheckSwitchStates();
         }
 
         public override void FixedUpdateState()

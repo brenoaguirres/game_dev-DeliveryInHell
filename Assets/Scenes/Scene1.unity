@@ -599,6 +599,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ____PLAYER____
       objectReference: {fileID: 0}
+    - target: {fileID: 4487890810316282493, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912475291710455424, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6474341450025748002, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
