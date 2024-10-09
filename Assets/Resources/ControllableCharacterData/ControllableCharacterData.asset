@@ -10,5 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43e625c3b440d844bb102c2c26b0583b, type: 3}
-  m_Name: Data
+  m_Name: ControllableCharacterData
   m_EditorClassIdentifier: 
+  _walkSpeed: 5
+  _runSpeed: 10
+  _skidTime: 0
+  _maxJumpForce: 5
+  _maxJumpTime: 1
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _maxGroundCheckDist: 1
+  _basePosition: {fileID: 0}

@@ -5386,7 +5386,6 @@ GameObject:
   - component: {fileID: 7953241457735560195}
   - component: {fileID: 2395617723489570642}
   - component: {fileID: 6217211418712518028}
-  - component: {fileID: 1207837492431397667}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -5473,17 +5472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fd6b845a59b9f49a1e96edcdd97dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
-  skidTime: 0
-  maxJumpForce: 5
-  maxJumpTime: 1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  maxGroundCheckDist: 1
-  basePosition: {fileID: 3834042092677117753}
-  jumpPhases: 0
+  _playerData: {fileID: 11400000, guid: 15c45d61e23a5934f91e3bf37f6c58bd, type: 2}
+  _inputData: {fileID: 11400000, guid: 871b97a28bbe6764abb8a02d91798489, type: 2}
+  _dataAssetPath: ControllableCharacterData/Data
+  _inputAssetPath: ControllableCharacterData/InputData
 --- !u!114 &6217211418712518028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5494,18 +5486,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf9eceb13d07f164b99262e6097185a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1207837492431397667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5058875390815551218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2586501a41ca7b46abf3388a2145a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5391946309908995825

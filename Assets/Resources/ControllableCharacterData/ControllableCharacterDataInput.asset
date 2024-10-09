@@ -10,5 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9712ac5c471b2b448a93b62cfd433ed7, type: 3}
-  m_Name: DataInput
+  m_Name: ControllableCharacterDataInput
   m_EditorClassIdentifier: 
+  _horizontalInput: 0
+  _verticalInput: 0
+  _runInput: 0
+  _jumpInput: 0
+  _aimInput: 0
+  _shootInput: 0

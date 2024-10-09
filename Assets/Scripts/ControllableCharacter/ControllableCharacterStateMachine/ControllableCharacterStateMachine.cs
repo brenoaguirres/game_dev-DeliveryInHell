@@ -5,7 +5,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
     public class ControllableCharacterStateMachine : MonoBehaviour
     {
         #region FIELDS
-
+        private bool _initialized = false;
         #endregion
 
         #region PROPERTIES
@@ -42,37 +42,40 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         private ControllableCharacterDataInput _dataInput;
         #endregion
 
-        #region STATE MACHINE PATTERN
+        #region STATE PATTERN
         [Header("State Pattern")]
-        [Tooltip("DEBUG ONLY - Assigning values manually via inspector may result in unaccounted behavior.")]
-        [SerializeField] private ControllableCharacterState _currentState;
+        private ControllableCharacterState _currentState;
         private ControllableCharacterStateFactory _states;
         #endregion
 
         #region DEFAULT METHODS
 
-        private void Awake()
-        {
-            // setup state
-            _states = new ControllableCharacterStateFactory(this);
-            _currentState = _states.Ground();
-            _currentState.EnterState();
-        }
-
-        private void Start()
-        {
-
-        }
-
         private void Update()
         {
+            if (!_initialized) return;
+
             _currentState.UpdateStates();
+        }
+
+        private void FixedUpdate()
+        {
+            if (!_initialized) return;
+
+            _currentState.FixedUpdateStates();
         }
 
         #endregion
 
         #region CUSTOM METHODS
+        public void Initialize()
+        {
+            // setup state
+            _states = new ControllableCharacterStateFactory(this);
+            _currentState = _states.Ground();
+            _currentState.EnterState();
 
+            _initialized = true;
+        }
         #endregion
     }
 }

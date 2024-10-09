@@ -21,7 +21,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             
         }
-        
+
+        public override void FixedUpdateState()
+        {
+        }
+
         public override void ExitState()
         {
         }
