@@ -33,7 +33,7 @@ namespace CBPXL.ControllableCharacter
         #endregion
 
         #region DEFAULT METHODS
-        private void Start()
+        private void Awake()
         {
             SetupPlayer();
         }

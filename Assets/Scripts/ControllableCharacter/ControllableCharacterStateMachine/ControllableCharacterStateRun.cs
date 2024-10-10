@@ -33,11 +33,11 @@ public class ControllableCharacterStateRun : ControllableCharacterState
     {
         if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
         {
-            SetSubState(Factory.Idle());
+            SwitchState(Factory.Idle());
         }
         else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
         {
-            SetSubState(Factory.Walk());
+            SwitchState(Factory.Walk());
         }
     }
 

@@ -36,11 +36,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
             {
-                SetSubState(Factory.Walk());
+                SwitchState(Factory.Walk());
             }
             else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && Ctx.Input.RunInput)
             {
-                SetSubState(Factory.Run());
+                SwitchState(Factory.Run());
             }
         }
 

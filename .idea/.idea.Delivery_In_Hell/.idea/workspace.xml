@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="74308234-1891-4798-bb25-7e695d2ae437" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterDataInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterDataInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateAim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateAim.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateGround.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateGround.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateIdle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateIdle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateJump.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateWalk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateWalk.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/GamePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/GamePlayer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +105,7 @@
       <workItem from="1728165751097" duration="788000" />
       <workItem from="1728235760398" duration="1082000" />
       <workItem from="1728268160286" duration="846000" />
+      <workItem from="1728574272489" duration="686000" />
     </task>
     <servers />
   </component>
