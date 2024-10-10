@@ -1935,6 +1935,7 @@ MonoBehaviour:
   _inputData: {fileID: 11400000, guid: 871b97a28bbe6764abb8a02d91798489, type: 2}
   _dataAssetPath: ControllableCharacterData/Data
   _inputAssetPath: ControllableCharacterData/InputData
+  _jumpBasePosition: {fileID: 3834042092677117753}
 --- !u!114 &6217211418712518028
 MonoBehaviour:
   m_ObjectHideFlags: 0

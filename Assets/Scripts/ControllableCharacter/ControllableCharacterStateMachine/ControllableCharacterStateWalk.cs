@@ -17,7 +17,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void EnterState()
         {
-            Ctx.Data.Animator.SetBool("Walk", true);
+            if (_currentSuperState != null && _currentSuperState.GetType() == typeof(ControllableCharacterStateGround))
+                Ctx.Data.Animator.SetBool("Walk", true);
         }
 
         public override void UpdateState()
@@ -32,7 +33,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void ExitState()
         {
-            //Ctx.Data.Animator.SetBool("Walk", false);
+            Ctx.Data.Animator.SetBool("Walk", false);
         }
 
         public override void CheckSwitchStates()

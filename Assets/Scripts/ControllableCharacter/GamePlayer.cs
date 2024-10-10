@@ -15,6 +15,10 @@ namespace CBPXL.ControllableCharacter
         [SerializeField] private ControllableCharacterDataInput _inputData;
         [SerializeField] private string _dataAssetPath = "ControllableCharacterData/Data";
         [SerializeField] private string _inputAssetPath = "ControllableCharacterData/InputData";
+
+        [Space(2)]
+        [Header("Jump Settings")]
+        [SerializeField] private Transform _jumpBasePosition;
         #endregion
 
         #region PROPERTIES
@@ -41,18 +45,16 @@ namespace CBPXL.ControllableCharacter
         {
             // input and flags
             UpdateInput();
-            UpdateFlags();
 
             // logic
             //UpdateAttack(aimInput, shootInput, lookInput);
 
             // animation
             UpdateAnimation();
+
+            Debug.Log(Physics.Raycast(_jumpBasePosition.position, Vector3.down, 1, _playerData.GroundLayer));
         }
-        private void FixedUpdate()
-        {
-            UpdateJump();
-        }
+
         #endregion
 
         #region CLASS METHODS
@@ -100,6 +102,9 @@ namespace CBPXL.ControllableCharacter
             _playerData.Animator = GetComponentInChildren<Animator>();
             _playerData.Attack = GetComponentInChildren<AttackPlayer>();
 
+            // Jump State Setup
+            _playerData.JumpBasePosition = _jumpBasePosition;
+
             // State Initialization
             _stateMachine.Initialize();
         }
@@ -112,65 +117,7 @@ namespace CBPXL.ControllableCharacter
             _inputData.AimInput = _input.Aim;
             _inputData.ShootInput = _input.Shoot;
         }
-        private void UpdateFlags()
-        {
 
-        }
-
-        private void UpdateJump()
-        {
-            //// checking jump conditions
-            //RaycastHit hit;
-            //canJump = false;
-            //isGrounded = false;
-            //if (Physics.Raycast(basePosition.position, -basePosition.up, out hit, maxGroundCheckDist, groundLayer))
-            //{
-            //    jumpPhases = JumpPhases.GROUND;
-            //    isGrounded = true;
-            //}
-            //if (isGrounded && jumpInput > 0.1f)
-            //    canJump = true;
-            //Debug.DrawRay(basePosition.position, -basePosition.up, Color.magenta, maxGroundCheckDist);
-
-            //// jump start
-            //if (canJump)
-            //{
-            //    jumpPhases = JumpPhases.IMPULSE;
-            //}
-
-            //// jump mid-air
-            //if (jumpPhases == JumpPhases.IMPULSE && jumpInput >= 0.1f)
-            //{
-            //    currentJumpForce = Mathf.Lerp(currentJumpForce, maxJumpForce, maxJumpTime);
-            //    physics.AddForce(Vector3.up * currentJumpForce, ForceMode.VelocityChange);
-            //}
-
-            //// jump max-height reached
-            //if (currentJumpForce >= maxJumpForce)
-            //{
-            //    jumpPhases = JumpPhases.MAX_HEIGHT;
-            //}
-
-            //// jump inertia
-            //if(jumpPhases == JumpPhases.MAX_HEIGHT)
-            //{
-            //    currentJumpForce = Mathf.Lerp(currentJumpForce, 0, maxJumpTime);
-            //    physics.AddForce(Vector3.up * currentJumpForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
-            //}
-
-            //// jump inertia over
-            //if (currentJumpForce <= 0 && !isGrounded)
-            //{
-            //    jumpPhases = JumpPhases.FALLING;
-            //    //physics.linearVelocity = new Vector3(physics.linearVelocity.x, 0, physics.linearVelocity.z);
-            //}
-
-            //// jump fall
-            //if (jumpPhases != JumpPhases.FALLING)
-            //{
-                
-            //}
-        }
         private void UpdateAttack(bool aim, bool shoot, float look)
         {
             //attack.UpdateAttack(aim, shoot, look);

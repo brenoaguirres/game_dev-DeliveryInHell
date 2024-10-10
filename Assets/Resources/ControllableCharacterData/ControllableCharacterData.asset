@@ -19,6 +19,6 @@ MonoBehaviour:
   _maxJumpTime: 1
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _maxGroundCheckDist: 1
-  _basePosition: {fileID: 0}
+    m_Bits: 8
+  _maxGroundCheckDist: 41.75
+  _jumpBasePosition: {fileID: 0}
