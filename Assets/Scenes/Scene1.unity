@@ -599,13 +599,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ____PLAYER____
       objectReference: {fileID: 0}
-    - target: {fileID: 4487890810316282493, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
-      propertyPath: m_Sources.Array.data[0].sourceTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912475291710455424, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
-      propertyPath: m_Sources.Array.data[0].sourceTransform
-      value: 
+    - target: {fileID: 2490740525033940152, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1300076
       objectReference: {fileID: 0}
     - target: {fileID: 6474341450025748002, guid: 70e6804c9e4588c418c290c4e7f90bf0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -660,9 +656,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 239266176954102644, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13999987
+      objectReference: {fileID: 0}
+    - target: {fileID: 239266176954102644, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
     - target: {fileID: 671545570353504975, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
       propertyPath: m_Name
       value: ____CAMERA____
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974632824517859620, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13999987
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974632824517859620, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103060109692932501, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
+      propertyPath: FollowOffset.y
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103060109692932501, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
+      propertyPath: FollowOffset.z
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 8377537260106001411, guid: 3f88344fa965e8a449be49a131fa53de, type: 3}
       propertyPath: m_LocalPosition.x
