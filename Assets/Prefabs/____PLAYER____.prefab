@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fd6b845a59b9f49a1e96edcdd97dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerData: {fileID: 11400000, guid: 15c45d61e23a5934f91e3bf37f6c58bd, type: 2}
+  _playerData: {fileID: 11400000, guid: db819dfd2b1297749a4b1540abb69692, type: 2}
   _inputData: {fileID: 11400000, guid: 871b97a28bbe6764abb8a02d91798489, type: 2}
   _dataAssetPath: ControllableCharacterData/Data
   _inputAssetPath: ControllableCharacterData/InputData
@@ -2753,7 +2753,7 @@ Transform:
   m_GameObject: {fileID: 6360583922130219808}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.886, y: -0.4976821, z: 0.13000764}
+  m_LocalPosition: {x: -0.886, y: -0.4976821, z: 0.1300076}
   m_LocalScale: {x: 0.266516, y: 0.31421432, z: 0.17715171}
   m_ConstrainProportionsScale: 0
   m_Children:
