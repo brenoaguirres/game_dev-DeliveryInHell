@@ -36,7 +36,7 @@ namespace CBPXL.DialogueSystem
                 _textBox.text = string.Empty;
                 yield return new WaitForSeconds(_typeSpeed);
             }
-            else if (_boxLineIndex < 0)
+            else if (_boxLineIndex != 0)
             {
                 _textBox.text += "\n";
             }
