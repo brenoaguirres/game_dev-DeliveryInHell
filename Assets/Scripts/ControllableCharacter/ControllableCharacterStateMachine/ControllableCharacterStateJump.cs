@@ -37,9 +37,9 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public override void CheckSwitchStates()
         {
             // FIX: very slow return due to lack of fall state (this methods remains being called after state change
-            if ((Ctx.Data.IsGrounded && !Ctx.Input.JumpInput))
+            if (Ctx.Data.Physics.linearVelocity.y <= 0.1f && !Ctx.Input.JumpInput)
             {
-                SwitchState(Factory.Ground());
+                SwitchState(Factory.Fall());
             }
         }
 

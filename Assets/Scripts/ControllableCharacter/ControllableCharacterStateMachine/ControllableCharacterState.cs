@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
+    [Serializable]
     public abstract class ControllableCharacterState
     {
         #region FIELDS
