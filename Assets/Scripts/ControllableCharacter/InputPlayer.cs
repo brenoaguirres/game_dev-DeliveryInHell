@@ -8,7 +8,9 @@ namespace CBPXL.ControllableCharacter
     public class InputPlayer : MonoBehaviour
     {
         #region FIELDS
+        private PlayerInput playerInput;
         private PlayerInputActions inputs;
+
         private float movementHorizontal = 0;
         private float movementVertical = 0;
         private bool jump = false;
@@ -30,10 +32,14 @@ namespace CBPXL.ControllableCharacter
         private void Awake()
         {
             inputs = new PlayerInputActions();
+
+            playerInput = GetComponent<PlayerInput>();
+            playerInput.actions = inputs.asset;
         }
         private void OnEnable()
         {
             inputs.Enable();
+            
 
             // movement input
             inputs.Player.Movement.started += MovementInput;
