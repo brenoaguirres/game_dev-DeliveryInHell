@@ -1046,8 +1046,46 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4812992621346679261, guid: 87e11adf8b424614dbe3015fa3018678, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6420953701191467692}
   m_SourcePrefab: {fileID: 100100000, guid: 87e11adf8b424614dbe3015fa3018678, type: 3}
+--- !u!114 &6420953701191467690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8376526477125991136, guid: 87e11adf8b424614dbe3015fa3018678, type: 3}
+  m_PrefabInstance: {fileID: 6420953701191467689}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6420953701191467691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4812992621346679261, guid: 87e11adf8b424614dbe3015fa3018678, type: 3}
+  m_PrefabInstance: {fileID: 6420953701191467689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6420953701191467692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420953701191467691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36ac1c013cb60c4e8b856b0bf9385d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textBox: {fileID: 6420953701191467690}
+  _lines:
+  - Hello! This is a DialogueBox.
+  - Welcome to the game!
+  - Do you want instructions?
+  _typeSpeed: 0.2
+  _maxLines: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
