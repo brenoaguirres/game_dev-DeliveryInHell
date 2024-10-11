@@ -20,5 +20,5 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _maxGroundCheckDist: 41.75
+  _maxGroundCheckDist: 0.2
   _jumpBasePosition: {fileID: 0}

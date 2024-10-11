@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="74308234-1891-4798-bb25-7e695d2ae437" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateIdle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateIdle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ControllableCharacterData/ControllableCharacterData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ControllableCharacterData/ControllableCharacterData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateJump.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateWalk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateWalk.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/GamePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/GamePlayer.cs" afterDir="false" />
     </list>
@@ -105,7 +107,8 @@
       <workItem from="1728165751097" duration="788000" />
       <workItem from="1728235760398" duration="1082000" />
       <workItem from="1728268160286" duration="846000" />
-      <workItem from="1728574272489" duration="686000" />
+      <workItem from="1728574272489" duration="1569000" />
+      <workItem from="1728604338300" duration="2495000" />
     </task>
     <servers />
   </component>

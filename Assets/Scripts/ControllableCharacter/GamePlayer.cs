@@ -51,8 +51,6 @@ namespace CBPXL.ControllableCharacter
 
             // animation
             UpdateAnimation();
-
-            Debug.Log(Physics.Raycast(_jumpBasePosition.position, Vector3.down, 1, _playerData.GroundLayer));
         }
 
         #endregion

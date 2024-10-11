@@ -36,7 +36,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void CheckSwitchStates()
         {
-            if (Ctx.Data.IsGrounded && !Ctx.Input.JumpInput)
+            // FIX: very slow return due to lack of fall state (this methods remains being called after state change
+            if ((Ctx.Data.IsGrounded && !Ctx.Input.JumpInput))
             {
                 SwitchState(Factory.Ground());
             }
@@ -44,30 +45,28 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void InitializeSubState()
         {
-            //if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
-            //{
-            //    SetSubState(Factory.Walk());
-            //}
+            if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
+            {
+                SetSubState(Factory.Walk());
+            }
         }
         #endregion
 
         #region BEHAVIOR METHODS
         public void CheckGrounded()
         {
-            Debug.DrawRay(Ctx.Data.JumpBasePosition.position, Vector3.down, Color.magenta, Ctx.Data.MaxGroundCheckDist);
-            Debug.Log(Physics.Raycast(Ctx.Data.JumpBasePosition.position, Vector3.down, Ctx.Data.MaxGroundCheckDist, Ctx.Data.GroundLayer));
-            Ctx.Data.IsGrounded = Physics.Raycast(Ctx.Data.JumpBasePosition.position, Vector3.down, Ctx.Data.MaxGroundCheckDist, Ctx.Data.GroundLayer);
+            Ctx.Data.IsGrounded = Physics.Raycast(Ctx.Data.JumpBasePosition.position, -Ctx.Data.JumpBasePosition.up, Ctx.Data.MaxGroundCheckDist, Ctx.Data.GroundLayer);
         }
         public void UpdateJump()
         {
             if (Ctx.Data.IsGrounded)
             {
-                Ctx.Data.Physics.linearVelocity.Set(Ctx.Data.Physics.linearVelocity.x, Ctx.Data.MaxJumpForce, 0f);
+                Ctx.Data.Physics.linearVelocity = new Vector3(Ctx.Data.Physics.linearVelocity.x, Ctx.Data.MaxJumpForce, 0f);
             }
 
             if (!Ctx.Data.IsGrounded && !Ctx.Input.JumpInput)
             {
-                Ctx.Data.Physics.linearVelocity.Set(Ctx.Data.Physics.linearVelocity.x, 0f, 0f);
+                Ctx.Data.Physics.linearVelocity = new Vector3(Ctx.Data.Physics.linearVelocity.x, 0f, 0f);
             }
         }
         #endregion
