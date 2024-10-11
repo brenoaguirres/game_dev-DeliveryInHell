@@ -17,9 +17,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void EnterState()
         {
-            // FIX: check this condition because animation isnt working anymore
-            //if (_currentSuperState != null && _currentSuperState.GetType() == typeof(ControllableCharacterStateGround))
-                Ctx.Data.Animator.SetBool("Walk", true);
+            Ctx.Data.Animator.SetBool("Walk", true);
         }
 
         public override void UpdateState()

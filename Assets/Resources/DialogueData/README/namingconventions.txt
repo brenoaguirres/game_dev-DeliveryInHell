@@ -1,0 +1,15 @@
+example -
+dlg01010001.json
+
+dlg -> dialoguefile
+01 -> context (01 stands for information)
+01 -> level number
+0001 -> dialogue asset id
+.json - save in json
+
+
+context tags
+00 -> debug
+01 -> information
+02 -> character
+03 -> interaction

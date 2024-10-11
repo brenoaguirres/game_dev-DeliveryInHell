@@ -194,6 +194,54 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DialogueBox"",
+            ""id"": ""d56478b4-018a-4b05-a5c1-6d713c1915fb"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1dbfbd2-d472-4424-9809-5b6a92ed7b87"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""b86b5c29-effa-4e8f-ae71-e6c4f8f0bcf6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4f6a133b-80e4-413b-bf86-dfffc6b6a639"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c88c4ae-0add-4c44-bd43-06eeaeba16a2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -206,11 +254,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        // DialogueBox
+        m_DialogueBox = asset.FindActionMap("DialogueBox", throwIfNotFound: true);
+        m_DialogueBox_Next = m_DialogueBox.FindAction("Next", throwIfNotFound: true);
+        m_DialogueBox_Close = m_DialogueBox.FindAction("Close", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputActions.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_DialogueBox.enabled, "This will cause a leak and performance issues, PlayerInputActions.DialogueBox.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -354,6 +407,60 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // DialogueBox
+    private readonly InputActionMap m_DialogueBox;
+    private List<IDialogueBoxActions> m_DialogueBoxActionsCallbackInterfaces = new List<IDialogueBoxActions>();
+    private readonly InputAction m_DialogueBox_Next;
+    private readonly InputAction m_DialogueBox_Close;
+    public struct DialogueBoxActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public DialogueBoxActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Next => m_Wrapper.m_DialogueBox_Next;
+        public InputAction @Close => m_Wrapper.m_DialogueBox_Close;
+        public InputActionMap Get() { return m_Wrapper.m_DialogueBox; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueBoxActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueBoxActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueBoxActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueBoxActionsCallbackInterfaces.Add(instance);
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
+        }
+
+        private void UnregisterCallbacks(IDialogueBoxActions instance)
+        {
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
+        }
+
+        public void RemoveCallbacks(IDialogueBoxActions instance)
+        {
+            if (m_Wrapper.m_DialogueBoxActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueBoxActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueBoxActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueBoxActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueBoxActions @DialogueBox => new DialogueBoxActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -362,5 +469,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+    }
+    public interface IDialogueBoxActions
+    {
+        void OnNext(InputAction.CallbackContext context);
+        void OnClose(InputAction.CallbackContext context);
     }
 }

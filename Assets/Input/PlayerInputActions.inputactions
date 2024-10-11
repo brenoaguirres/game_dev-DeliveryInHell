@@ -172,6 +172,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DialogueBox",
+            "id": "d56478b4-018a-4b05-a5c1-6d713c1915fb",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "e1dbfbd2-d472-4424-9809-5b6a92ed7b87",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "b86b5c29-effa-4e8f-ae71-e6c4f8f0bcf6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4f6a133b-80e4-413b-bf86-dfffc6b6a639",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c88c4ae-0add-4c44-bd43-06eeaeba16a2",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
