@@ -28,12 +28,16 @@ namespace CBPXL.InteractSystem
         {
             _insideArea = true;
             _colliderObjects.Add(other);
+
+            Highlight(other, true);
         }
         public void OnTriggerExit(Collider other)
         {
             _insideArea = false;
             _cleanableColliders.Add(other);
             StartCoroutine(CleanInteractableArray());
+
+            Highlight(other, false);
         }
         #endregion
 
@@ -53,6 +57,16 @@ namespace CBPXL.InteractSystem
                         return;
                     }
                 }
+            }
+        }
+
+        public void Highlight(Collider other, bool toggleOn)
+        {
+            IInteractable interactable;
+            other.gameObject.TryGetComponent<IInteractable>(out interactable);
+            if (interactable != null)
+            {
+                interactable.HighlightInteractable(toggleOn);
             }
         }
 

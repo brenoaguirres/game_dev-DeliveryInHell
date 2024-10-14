@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lines:
   - End of the Road.
+  _highlightables: []
+  _highlightMaterial: {fileID: 0}
   _dBox: {fileID: 6420953701191467692}
 --- !u!65 &67443070
 BoxCollider:
@@ -565,6 +567,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lines:
   - Welcome to Hell!
+  _highlightables:
+  - {fileID: 928022934}
+  - {fileID: 1138924999}
+  - {fileID: 1281882855}
+  - {fileID: 1426907665}
+  _highlightMaterial: {fileID: 2100000, guid: 7fe0ea00e9dbef4448ea695e67360314, type: 2}
   _dBox: {fileID: 6420953701191467692}
 --- !u!1 &564487687
 GameObject:
