@@ -62,11 +62,11 @@ namespace CBPXL.InteractSystem
 
         public void Highlight(Collider other, bool toggleOn)
         {
-            IInteractable interactable;
-            other.gameObject.TryGetComponent<IInteractable>(out interactable);
-            if (interactable != null)
+            HighlightObject highlightable;
+            other.gameObject.TryGetComponent<HighlightObject>(out highlightable);
+            if (highlightable != null)
             {
-                interactable.HighlightInteractable(toggleOn);
+                highlightable.HighlightInteractable(toggleOn);
             }
         }
 

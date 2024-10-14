@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 67443068}
   - component: {fileID: 67443070}
   - component: {fileID: 67443069}
+  - component: {fileID: 67443071}
   m_Layer: 0
   m_Name: Interactable
   m_TagString: Untagged
@@ -165,8 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lines:
   - End of the Road.
-  _highlightables: []
-  _highlightMaterial: {fileID: 0}
   _dBox: {fileID: 6420953701191467692}
 --- !u!65 &67443070
 BoxCollider:
@@ -189,6 +188,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 6}
   m_Center: {x: 0, y: -1.7327695, z: -1.4641049}
+--- !u!114 &67443071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67443067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4ea873a09dca54cb3c98b5418ce17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightables:
+  - {fileID: 1896330341}
+  - {fileID: 658415628}
+  - {fileID: 1820855164}
+  - {fileID: 2018192477}
+  _highlightMaterial: {fileID: 2100000, guid: 7fe0ea00e9dbef4448ea695e67360314, type: 2}
 --- !u!1 &100538853
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +527,7 @@ GameObject:
   - component: {fileID: 539764223}
   - component: {fileID: 539764224}
   - component: {fileID: 539764225}
+  - component: {fileID: 539764226}
   m_Layer: 0
   m_Name: Interactable
   m_TagString: Untagged
@@ -567,13 +585,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lines:
   - Welcome to Hell!
+  _dBox: {fileID: 6420953701191467692}
+--- !u!114 &539764226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539764222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4ea873a09dca54cb3c98b5418ce17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _highlightables:
   - {fileID: 928022934}
   - {fileID: 1138924999}
   - {fileID: 1281882855}
   - {fileID: 1426907665}
   _highlightMaterial: {fileID: 2100000, guid: 7fe0ea00e9dbef4448ea695e67360314, type: 2}
-  _dBox: {fileID: 6420953701191467692}
 --- !u!1 &564487687
 GameObject:
   m_ObjectHideFlags: 0
