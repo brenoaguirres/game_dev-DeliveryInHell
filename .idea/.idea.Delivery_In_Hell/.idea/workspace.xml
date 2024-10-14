@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="74308234-1891-4798-bb25-7e695d2ae437" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MODERN TYPEWRITER SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/MODERN TYPEWRITER SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/Controller/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player/Controller/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/PlayerInputActions.inputactions.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DialogueSystem/DialogueBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DialogueSystem/DialogueBox.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +111,7 @@
       <workItem from="1728574272489" duration="1569000" />
       <workItem from="1728604338300" duration="4213000" />
       <workItem from="1728659948152" duration="1455000" />
+      <workItem from="1728871769321" duration="558000" />
     </task>
     <servers />
   </component>

@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look",
+                    "name": "LookUp/Crouch",
                     "type": "Value",
                     "id": "07fa5cf0-049a-41e0-ac94-c21426683011",
                     "expectedControlType": "Axis",
@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AimPos",
+                    "type": "Value",
+                    "id": "b9dd272d-010c-4305-96a9-1a79fd2c510c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -134,7 +143,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "LookUp/Crouch",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -145,7 +154,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "LookUp/Crouch",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -156,7 +165,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "LookUp/Crouch",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -168,6 +177,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0597c9d8-68dc-44bd-b551-4d9daab96442",
+                    "path": "<Pointer>/position/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
