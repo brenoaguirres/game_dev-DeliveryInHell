@@ -12,6 +12,7 @@ public class ControllableCharacterDataInput : ScriptableObject
     [SerializeField] private bool _aimInput = false;
     [SerializeField] private bool _shootInput = false;
     [SerializeField] private bool _interactInput = false;
+    [SerializeField] private float _aimPosInput = 0f;
     #endregion
     
     #region PROPERTIES
@@ -49,6 +50,11 @@ public class ControllableCharacterDataInput : ScriptableObject
     {
         get { return _interactInput; }
         set { _interactInput = value; }
+    }
+    public float AimPosInput
+    {
+        get { return _aimPosInput; }
+        set { _aimPosInput = value; }
     }
     #endregion
 }

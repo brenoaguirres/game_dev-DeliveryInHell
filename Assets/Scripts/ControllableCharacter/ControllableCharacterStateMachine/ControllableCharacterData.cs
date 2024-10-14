@@ -25,6 +25,11 @@ public class ControllableCharacterData : ScriptableObject
     [SerializeField] private float _maxGroundCheckDist = 1f;
     [Tooltip("The position in which the character's feet is located.")]
     [SerializeField] private Transform _jumpBasePosition;
+
+    [Space(2)]
+    [Header("Aim")]
+    [SerializeField] private float _lowerAimMouseThreshold = 350f;
+    [SerializeField] private float _upperAimMouseThreshold = 500f;
     #endregion
 
     #region PROPERTIES
@@ -42,6 +47,9 @@ public class ControllableCharacterData : ScriptableObject
     public LayerMask GroundLayer { get { return _groundLayer; } set { _groundLayer = value; } }
     public float MaxGroundCheckDist { get { return _maxGroundCheckDist; } set { _maxGroundCheckDist = value; } }
     public Transform JumpBasePosition { get { return _jumpBasePosition; } set { _jumpBasePosition = value; } }
+    // aim
+    public float LowerAimMouseThreshold { get { return _lowerAimMouseThreshold; } set { _lowerAimMouseThreshold = value; } }
+    public float UpperAimMouseThreshold { get { return _upperAimMouseThreshold; } set { _upperAimMouseThreshold = value; } }
     // refs
     public Rigidbody Physics { get { return _physics; } set { _physics = value; } }
     public Animator Animator { get { return _animator; } set { _animator = value; } }

@@ -38,6 +38,10 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SwitchState(Factory.Interact());
             }
+            if (Ctx.Input.AimInput)
+            {
+                SwitchState(Factory.Aim());
+            }
             else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
             {
                 SwitchState(Factory.Walk());

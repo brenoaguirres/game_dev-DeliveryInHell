@@ -117,6 +117,7 @@ namespace CBPXL.ControllableCharacter
             _inputData.AimInput = _input.Aim;
             _inputData.ShootInput = _input.Shoot;
             _inputData.InteractInput = _input.Interact;
+            _inputData.AimPosInput = _input.AimPos;
         }
 
         private void UpdateAttack(bool aim, bool shoot, float look)

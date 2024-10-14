@@ -1,9 +1,9 @@
 [ ] difference move anim for jump, ground and crouched
 [ ] crouch superstate -> move crouched
 [ ] lookup state -> change scenery interaction
-[ ] interaction state - Interact with stuff
+[x] interaction state - Interact with stuff
 [ ] change controller when UI Dialoguebox
-[ ] highlight shader for interactables
+[x] highlight shader for interactables
 [ ] interactable button above hover Icon
 
 [ ] create backstreet

@@ -18,6 +18,7 @@ namespace CBPXL.ControllableCharacter
         private bool aim = false;
         private bool shoot = false;
         private bool interact = false;
+        private float aimPos = 0;
         #endregion
 
         #region PROPERTIES
@@ -28,6 +29,7 @@ namespace CBPXL.ControllableCharacter
         public bool Aim { get => aim; }
         public bool Shoot { get => shoot; }
         public bool Interact { get => interact; }
+        public float AimPos { get => aimPos; }
         #endregion
 
         #region DEFAULT METHODS
@@ -77,6 +79,11 @@ namespace CBPXL.ControllableCharacter
             inputs.Player.Interact.started += InteractInput;
             inputs.Player.Interact.performed += InteractInput;
             inputs.Player.Interact.canceled += InteractInput;
+
+            // aim position input
+            inputs.Player.AimPos.started += AimPosInput;
+            inputs.Player.AimPos.performed += AimPosInput;
+            inputs.Player.AimPos.canceled += AimPosInput;
         }
 
         private void OnDisable()
@@ -117,6 +124,11 @@ namespace CBPXL.ControllableCharacter
             inputs.Player.Interact.started -= InteractInput;
             inputs.Player.Interact.performed -= InteractInput;
             inputs.Player.Interact.canceled -= InteractInput;
+
+            // aim position input
+            inputs.Player.AimPos.started -= AimPosInput;
+            inputs.Player.AimPos.performed -= AimPosInput;
+            inputs.Player.AimPos.canceled -= AimPosInput;
         }
         #endregion
 
@@ -148,6 +160,10 @@ namespace CBPXL.ControllableCharacter
         private void InteractInput(InputAction.CallbackContext context)
         {
             interact = context.ReadValueAsButton();
+        }
+        private void AimPosInput(InputAction.CallbackContext context)
+        {
+            aimPos = context.ReadValue<float>();
         }
         #endregion
     }
