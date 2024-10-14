@@ -17,6 +17,7 @@ namespace CBPXL.ControllableCharacter
         private bool run = false;
         private bool aim = false;
         private bool shoot = false;
+        private bool interact = false;
         #endregion
 
         #region PROPERTIES
@@ -26,6 +27,7 @@ namespace CBPXL.ControllableCharacter
         public bool Run { get => run; }
         public bool Aim { get => aim; }
         public bool Shoot { get => shoot; }
+        public bool Interact { get => interact; }
         #endregion
 
         #region DEFAULT METHODS
@@ -70,6 +72,11 @@ namespace CBPXL.ControllableCharacter
             inputs.Player.Shoot.started += ShootInput;
             inputs.Player.Shoot.performed += ShootInput;
             inputs.Player.Shoot.canceled += ShootInput;
+
+            // interact input
+            inputs.Player.Interact.started += InteractInput;
+            inputs.Player.Interact.performed += InteractInput;
+            inputs.Player.Interact.canceled += InteractInput;
         }
 
         private void OnDisable()
@@ -105,6 +112,11 @@ namespace CBPXL.ControllableCharacter
             inputs.Player.Shoot.started -= ShootInput;
             inputs.Player.Shoot.performed -= ShootInput;
             inputs.Player.Shoot.canceled -= ShootInput;
+
+            // interact input
+            inputs.Player.Interact.started -= InteractInput;
+            inputs.Player.Interact.performed -= InteractInput;
+            inputs.Player.Interact.canceled -= InteractInput;
         }
         #endregion
 
@@ -132,6 +144,10 @@ namespace CBPXL.ControllableCharacter
         private void ShootInput(InputAction.CallbackContext context)
         {
             shoot = context.ReadValueAsButton();
+        }
+        private void InteractInput(InputAction.CallbackContext context)
+        {
+            interact = context.ReadValueAsButton();
         }
         #endregion
     }

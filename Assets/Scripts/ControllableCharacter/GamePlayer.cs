@@ -2,6 +2,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using CBPXLStateMachine = CBPXL.ControllableCharacter.ControllableCharacterStateMachine;
+using Interact = CBPXL.InteractSystem;
 using System;
 using UnityEditor;
 
@@ -99,6 +100,7 @@ namespace CBPXL.ControllableCharacter
             _playerData.Physics = GetComponent<Rigidbody>();
             _playerData.Animator = GetComponentInChildren<Animator>();
             _playerData.Attack = GetComponentInChildren<AttackPlayer>();
+            _playerData.Interactor = GetComponentInChildren<Interact.Interactor>();
 
             // Jump State Setup
             _playerData.JumpBasePosition = _jumpBasePosition;
@@ -114,6 +116,7 @@ namespace CBPXL.ControllableCharacter
             _inputData.RunInput = _input.Run;
             _inputData.AimInput = _input.Aim;
             _inputData.ShootInput = _input.Shoot;
+            _inputData.InteractInput = _input.Interact;
         }
 
         private void UpdateAttack(bool aim, bool shoot, float look)

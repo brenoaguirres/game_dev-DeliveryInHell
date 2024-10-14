@@ -1,4 +1,5 @@
 using CBPXL.ControllableCharacter;
+using CBPXL.InteractSystem;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ControllableCharacterData", menuName = "Scriptable Objects/ControllableCharacterData")]
@@ -45,6 +46,7 @@ public class ControllableCharacterData : ScriptableObject
     public Rigidbody Physics { get { return _physics; } set { _physics = value; } }
     public Animator Animator { get { return _animator; } set { _animator = value; } }
     public AttackPlayer Attack { get { return _attack; } set { _attack = value; } }
+    public Interactor Interactor { get { return _interactor; } set { _interactor = value; } }
     #endregion
 
     #region REFERENCES
@@ -52,5 +54,6 @@ public class ControllableCharacterData : ScriptableObject
     private Animator _animator;
 
     private AttackPlayer _attack;
+    private Interactor _interactor;
     #endregion
 }

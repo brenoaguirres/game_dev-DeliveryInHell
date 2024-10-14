@@ -41,7 +41,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void InitializeSubState()
         {
-            if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
+            if (Ctx.Input.InteractInput)
+            {
+                SetSubState(Factory.Interact());
+            }
+            else if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
             {
                 SetSubState(Factory.Idle());
             }

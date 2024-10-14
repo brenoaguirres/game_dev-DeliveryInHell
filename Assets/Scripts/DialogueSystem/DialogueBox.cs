@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 namespace CBPXL.DialogueSystem
 {
+    //TODO: Make this class callable from singleton game manager or singleton this
     public class DialogueBox : MonoBehaviour
     {
         #region FIELDS
@@ -15,11 +16,14 @@ namespace CBPXL.DialogueSystem
         private int _lineIndex;
         private int _boxLineIndex;
         #endregion
-        void Start()
+
+        #region DEFAULT METHODS
+        private void OnEnable()
         {
             InitializeDialogue();
         }
-        
+        #endregion
+
         #region BEHAVIOR METHODS
         private void InitializeDialogue()
         {
@@ -63,6 +67,11 @@ namespace CBPXL.DialogueSystem
                 StopAllCoroutines();
                 gameObject.SetActive(false);
             }
+        }
+
+        public void ChangeText(string[] lines)
+        {
+            _lines = lines;
         }
         #endregion
     }

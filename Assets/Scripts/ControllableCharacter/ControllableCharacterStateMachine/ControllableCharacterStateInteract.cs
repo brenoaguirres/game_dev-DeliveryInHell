@@ -1,29 +1,32 @@
+using CBPXL.InteractSystem;
 using UnityEngine;
 
 namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
-    public class ControllableCharacterStateIdle : ControllableCharacterState
+    public class ControllableCharacterStateInteract : ControllableCharacterState
     {
-        #region CONSTRUCTOR
+        #region FIELDS
+        private bool _isInteracting = false;
+        #endregion
 
-        public ControllableCharacterStateIdle(ControllableCharacterStateMachine currentContext,
+        #region CONSTRUCTOR
+        public ControllableCharacterStateInteract(ControllableCharacterStateMachine currentContext,
             ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
         {
         }
-
         #endregion
 
         #region STATE METHODS
-
         public override void EnterState()
         {
+            _isInteracting = true;
         }
-        
+
         public override void UpdateState()
         {
             CheckSwitchStates();
+            UpdateInteraction();
         }
-
         public override void FixedUpdateState()
         {
         }
@@ -34,24 +37,24 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void CheckSwitchStates()
         {
-            if (Ctx.Input.InteractInput)
+            if (!_isInteracting)
             {
-                SwitchState(Factory.Interact());
-            }
-            else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && !Ctx.Input.RunInput)
-            {
-                SwitchState(Factory.Walk());
-            }
-            else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && Ctx.Input.RunInput)
-            {
-                SwitchState(Factory.Run());
+                SwitchState(Factory.Idle());
             }
         }
 
         public override void InitializeSubState()
         {
         }
+        #endregion
 
+        #region BEHAVIOR METHODS
+        private void UpdateInteraction()
+        {
+            Ctx.Data.Interactor.Interacting = true;
+            Ctx.Data.Interactor.Interact();
+            _isInteracting = false;
+        }
         #endregion
     }
 }
