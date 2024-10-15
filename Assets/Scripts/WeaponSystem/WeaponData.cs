@@ -5,6 +5,7 @@ namespace CBPXL.WeaponSystem
     [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
     public class WeaponData : ScriptableObject
     {
+        #region FIELDS
         [Header("ID")]
         [SerializeField] private string _weaponName = "Handgun";
         
@@ -30,6 +31,29 @@ namespace CBPXL.WeaponSystem
         [Space(2)]
         [Header("Visuals")]
         [SerializeField] private Mesh _weaponMesh;
+        #endregion
+
+        #region PROPERTIES
+        // ID
+        public string WeaponName { get { return _weaponName; } set { _weaponName = value; } }
+        // Stats
+        public float DamageBase { get { return _damageBase; } set { _damageBase = value; } }
+        public float CritRate { get { return _critRate; } set { _critRate = value; } }
+        public float CritMultiplier { get { return _critMultiplier; } set { _critMultiplier = value; } }
+        public float FireRate { get { return _fireRate; } set { _fireRate = value; } }
+        public float ReloadSpeed { get { return _reloadSpeed; } set { _reloadSpeed = value; } }
+        public float MaxRange { get { return _maxRange; } set { _maxRange = value; } }
+        public int MaxChamberBullets { get { return _maxChamberBullets; } set { _maxChamberBullets = value; } }
+        public int MaxStoredBullets { get { return _maxStoredBullets; } set { _maxStoredBullets = value; } }
+        public int CurrentChamberBullets { get { return _currentChamberBullets; } set { _currentChamberBullets = value; } }
+        public int CurrentStoredBullets { get { return _currentStoredBullets; } set { _currentStoredBullets = value; } }
+        // Type
+        public WeaponType WeaponType { get { return _weaponType; } set { _weaponType = value; } }
+        public SubType SubType { get { return _weaponSubType; } set { _weaponSubType = value; } }
+        public ActionType ActionType { get { return _actionType; } set { _actionType = value; } }
+        // Visuals
+        public Mesh WeaponMesh { get { return _weaponMesh; } set { _weaponMesh = value; } }
+        #endregion
     }
 
     public enum WeaponType
@@ -49,9 +73,7 @@ namespace CBPXL.WeaponSystem
     public enum ActionType
     {
         NONE,
-        MANUAL, // revolvers and handguns
-        BOLT_ACTION, // sniper
-        PUMP_ACTION, // shotgun
+        MANUAL,
         SEMI_AUTO,
         FULLY_AUTO
     }

@@ -6,6 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ControllableCharacterData", menuName = "Scriptable Objects/ControllableCharacterData")]
 public class ControllableCharacterData : ScriptableObject
 {
+    #region CONSTANTS
+    private const int _zero = 0;
+    private const int _one = 1;
+    #endregion
+
     #region FIELDS
     [Header("Movement")]
     [SerializeField] private float _walkSpeed = 5f;
@@ -38,11 +43,14 @@ public class ControllableCharacterData : ScriptableObject
     [SerializeField] private WeaponData _meleeWeapon;
     [SerializeField] private WeaponData _throwableWeapon;
     [SerializeField] private bool _canShoot = true;
-    [SerializeField] private float _fireRateTimer = 0f;
+    [SerializeField] private bool _gunLocked = false;
     [SerializeField] private float _reloadTimer = 0f;
     #endregion
 
     #region PROPERTIES
+    // constants
+    public int Zero {  get { return _zero; } }
+    public int One { get { return _one; } }
     // walk/run
     public float WalkSpeed { get { return _walkSpeed; } set { _walkSpeed = value; } }
     public float RunSpeed { get { return _runSpeed;  } set { _runSpeed = value; } }
@@ -60,6 +68,13 @@ public class ControllableCharacterData : ScriptableObject
     // aim
     public float LowerAimMouseThreshold { get { return _lowerAimMouseThreshold; } set { _lowerAimMouseThreshold = value; } }
     public float UpperAimMouseThreshold { get { return _upperAimMouseThreshold; } set { _upperAimMouseThreshold = value; } }
+    // shoot
+    public WeaponData RangedWeapon { get { return _rangedWeapon; } set { _rangedWeapon = value; } }
+    public WeaponData MeleeWeapon { get { return _meleeWeapon; } set { _meleeWeapon = value; } }
+    public WeaponData ThrowableWeapon { get { return _throwableWeapon; } set { _throwableWeapon = value; } }
+    public bool CanShoot { get { return _canShoot; } set { _canShoot = value; } }
+    public bool GunLocked { get { return _gunLocked; } set { _gunLocked = value; } }
+    public float ReloadTimer { get { return _reloadTimer; } set { _reloadTimer = value; } }
     // refs
     public Rigidbody Physics { get { return _physics; } set { _physics = value; } }
     public Animator Animator { get { return _animator; } set { _animator = value; } }

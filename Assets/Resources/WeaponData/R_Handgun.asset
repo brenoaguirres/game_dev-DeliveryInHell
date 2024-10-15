@@ -19,9 +19,11 @@ MonoBehaviour:
   _fireRate: 0.8
   _reloadSpeed: 1
   _maxRange: 3
-  _chamberBullets: 8
-  _maxBullets: 40
+  _maxChamberBullets: 8
+  _maxStoredBullets: 40
+  _currentChamberBullets: 0
+  _currentStoredBullets: 0
   _weaponType: 1
   _weaponSubType: 0
-  _actionType: 4
+  _actionType: 2
   _weaponMesh: {fileID: 0}
