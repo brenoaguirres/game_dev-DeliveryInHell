@@ -32,6 +32,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void ExitState()
         {
+            Ctx.Data.Animator.SetBool("Aim", false);
+            Ctx.Data.Animator.SetFloat("AimPos", 0f);
         }
 
         public override void CheckSwitchStates()
@@ -53,15 +55,15 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             if (Ctx.Input.AimPosInput <= Ctx.Data.LowerAimMouseThreshold)
             {
-                Debug.Log("Aim Down");
+                Ctx.Data.Animator.SetFloat("AimPos", -1f);
             }
             else if (Ctx.Input.AimPosInput >= Ctx.Data.UpperAimMouseThreshold)
             {
-                Debug.Log("Aim Up");
+                Ctx.Data.Animator.SetFloat("AimPos", 1f);
             }
             else
             {
-                Debug.Log("Aim Middle");
+                Ctx.Data.Animator.SetFloat("AimPos", 0f);
             }
         }
         #endregion

@@ -22,3 +22,5 @@ MonoBehaviour:
     m_Bits: 8
   _maxGroundCheckDist: 0.2
   _jumpBasePosition: {fileID: 0}
+  _lowerAimMouseThreshold: 200
+  _upperAimMouseThreshold: 400
