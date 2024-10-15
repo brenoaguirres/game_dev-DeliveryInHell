@@ -6,10 +6,42 @@
 [x] highlight shader for interactables
 [ ] interactable button above hover Icon
 
-[ ] create backstreet
-[ ] create platforms
+[ ] create backstreet (lookup)
+[ ] create platforms / stairs (lookup) / elevator (lookup)
+[ ] collectibles / inventory
+[ ] key-door (lookup / collectibles / inventory) ->>
+[ ] inner-building
+[ ] map
+[ ] options menu / game info menu
 
-[ ] shoot state
+[-] shoot state
 [ ] melee state
 
+[ ] bullet find upper middle lower target - closest within range + look dir
+[ ] health system, IDamageable interface
+
+[ ] character health, IDamageable
+[ ] character blood VFX
+[ ] SFX MC Hurt
+[ ] MC stagger and death states
+
+[ ] HUD -> Objective, Map, Health, Weapon + Bullet count + throwable count
+
+[ ] muzzle flash VFX
+[ ] capsule falling VFX
+
+[ ] Spatial Sound System
+[ ] SFX gunshot
+[ ] SFX footsteps
+[ ] SFX ambience + music
+
+[ ] game manager -> handle game states and controllers
+
 [ ] create basic zombie state machine + behavior
+[ ] zombie blood VFX
+[ ] SFX zombie
+[ ] SFX zombie hurt
+[ ] Zombie idle patrol chase attack stagger and death states
+
+[ ] camera look forward when moving + damping to return
+[ ] flashlight illumination + scene illumination
