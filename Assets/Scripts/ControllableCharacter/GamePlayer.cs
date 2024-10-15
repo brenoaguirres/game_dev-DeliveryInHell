@@ -62,11 +62,11 @@ namespace CBPXL.ControllableCharacter
                 {
                     _playerData = Resources.Load(_dataAssetPath) as ControllableCharacterData;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     _playerData = new ControllableCharacterData();
-                    AssetDatabase.CreateAsset(_playerData, "Resources/" + _dataAssetPath);
-                    AssetDatabase.SaveAssets();
+                    //AssetDatabase.CreateAsset(_playerData, "Assets/Resources/" + _dataAssetPath);
+                    //AssetDatabase.SaveAssets();
                 }
             }
             if (_inputData == null)
@@ -75,11 +75,11 @@ namespace CBPXL.ControllableCharacter
                 {
                     _inputData = Resources.Load(_inputAssetPath) as ControllableCharacterDataInput;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     _inputData = new ControllableCharacterDataInput();
-                    AssetDatabase.CreateAsset(_inputData, "Resources/" + _inputAssetPath);
-                    AssetDatabase.SaveAssets();
+                    //AssetDatabase.CreateAsset(_inputData, "Assets/Resources/" + _inputAssetPath);
+                    //AssetDatabase.SaveAssets();
                 }
             }
 
@@ -93,7 +93,6 @@ namespace CBPXL.ControllableCharacter
             _playerData.Physics = GetComponent<Rigidbody>();
             _playerData.Animator = GetComponentInChildren<Animator>();
             _playerData.AnimatorEvents = GetComponentInChildren<AnimatorEvents>();
-            _playerData.Attack = GetComponentInChildren<AttackPlayer>();
             _playerData.Interactor = GetComponentInChildren<Interact.Interactor>();
 
             // Jump State Setup

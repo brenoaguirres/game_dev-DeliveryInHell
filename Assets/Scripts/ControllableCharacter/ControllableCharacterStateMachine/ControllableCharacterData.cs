@@ -81,7 +81,6 @@ public class ControllableCharacterData : ScriptableObject
     public Rigidbody Physics { get { return _physics; } set { _physics = value; } }
     public Animator Animator { get { return _animator; } set { _animator = value; } }
     public AnimatorEvents AnimatorEvents { get { return _animatorEvents; } set { _animatorEvents = value; } }
-    public AttackPlayer Attack { get { return _attack; } set { _attack = value; } }
     public Interactor Interactor { get { return _interactor; } set { _interactor = value; } }
     #endregion
 
@@ -91,7 +90,6 @@ public class ControllableCharacterData : ScriptableObject
     private Animator _animator;
     private AnimatorEvents _animatorEvents;
 
-    private AttackPlayer _attack;
     private Interactor _interactor;
     #endregion
 }

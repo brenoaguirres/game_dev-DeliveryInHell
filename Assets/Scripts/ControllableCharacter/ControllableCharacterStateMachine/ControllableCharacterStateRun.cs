@@ -13,6 +13,7 @@ public class ControllableCharacterStateRun : ControllableCharacterState
     #region STATE METHODS
     public override void EnterState()
     {
+        Ctx.Data.Animator.SetBool("Run", true);
     }
         
     public override void UpdateState()
@@ -27,6 +28,7 @@ public class ControllableCharacterStateRun : ControllableCharacterState
 
     public override void ExitState()
     {
+        Ctx.Data.Animator.SetBool("Run", false);
     }
 
     public override void CheckSwitchStates()
