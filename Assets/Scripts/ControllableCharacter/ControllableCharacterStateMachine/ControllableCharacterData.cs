@@ -1,5 +1,6 @@
 using CBPXL.ControllableCharacter;
 using CBPXL.InteractSystem;
+using CBPXL.WeaponSystem;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ControllableCharacterData", menuName = "Scriptable Objects/ControllableCharacterData")]
@@ -30,6 +31,15 @@ public class ControllableCharacterData : ScriptableObject
     [Header("Aim")]
     [SerializeField] private float _lowerAimMouseThreshold = 350f;
     [SerializeField] private float _upperAimMouseThreshold = 500f;
+    
+    [Space(2)]
+    [Header("Shoot")]
+    [SerializeField] private WeaponData _rangedWeapon;
+    [SerializeField] private WeaponData _meleeWeapon;
+    [SerializeField] private WeaponData _throwableWeapon;
+    [SerializeField] private bool _canShoot = true;
+    [SerializeField] private float _fireRateTimer = 0f;
+    [SerializeField] private float _reloadTimer = 0f;
     #endregion
 
     #region PROPERTIES

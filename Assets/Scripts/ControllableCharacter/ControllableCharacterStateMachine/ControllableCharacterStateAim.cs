@@ -38,7 +38,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void CheckSwitchStates()
         {
-            if (!Ctx.Input.AimInput)
+            if (Ctx.Input.ShootInput)
+            {
+                SwitchState(Factory.Shoot());
+            }
+            else if (!Ctx.Input.AimInput)
             {
                 SwitchState(Factory.Idle());
             }

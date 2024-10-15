@@ -6,35 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="74308234-1891-4798-bb25-7e695d2ae437" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delivery_In_Hell/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackAimHigh.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackAimHigh.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackAimLow.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackAimLow.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackAimMiddle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackAimMiddle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackIdle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Clips/AttackIdle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Controllers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Controllers/PlayerAttackSystem.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/AttackSystem/Controllers/PlayerAttackSystem.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/Controller/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player/Controller/Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips/Idle1.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips/Idle1.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips/Run1.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips/Run1.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips/Walk1.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Clips/Walk1.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Controllers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Controllers/Player.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player/MainAnimator/Controllers/Player.controller.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/MODERN TYPEWRITER SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/MODERN TYPEWRITER SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/ControllableCharacterData/ControllableCharacterData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ControllableCharacterData/ControllableCharacterData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateAim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateAim.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterDataInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateRun.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllableCharacter/ControllableCharacterStateMachine/ControllableCharacterStateShoot.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -136,6 +114,7 @@
       <workItem from="1728659948152" duration="1455000" />
       <workItem from="1728871769321" duration="558000" />
       <workItem from="1728952113705" duration="903000" />
+      <workItem from="1728958192000" duration="3206000" />
     </task>
     <servers />
   </component>

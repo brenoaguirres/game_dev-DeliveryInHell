@@ -58,6 +58,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             return new ControllableCharacterStateInteract(_context, this);
         }
+
+        public ControllableCharacterStateShoot Shoot()
+        {
+            return new ControllableCharacterStateShoot(_context, this);
+        }
         #endregion
     }
 }

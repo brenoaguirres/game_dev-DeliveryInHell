@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfa7a878e6de8943afa2f5c367d65de, type: 3}
+  m_Name: M_CombatKnife
+  m_EditorClassIdentifier: 
+  _weaponName: Combat Knife
+  _damageBase: 5
+  _critRate: 0.2
+  _critMultiplier: 1.5
+  _fireRate: 0.3
+  _reloadSpeed: 0
+  _maxRange: 1
+  _chamberBullets: 0
+  _maxBullets: 0
+  _weaponType: 0
+  _weaponSubType: 0
+  _actionType: 0
+  _weaponMesh: {fileID: 0}
