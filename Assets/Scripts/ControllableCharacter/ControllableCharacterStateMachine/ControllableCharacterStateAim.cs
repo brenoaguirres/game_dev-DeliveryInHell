@@ -17,6 +17,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void EnterState()
         {
+            UpdateAim();
             Ctx.Data.Animator.SetBool("Aim", true);
         }
 
@@ -33,7 +34,6 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public override void ExitState()
         {
             Ctx.Data.Animator.SetBool("Aim", false);
-            Ctx.Data.Animator.SetFloat("AimPos", 0f);
         }
 
         public override void CheckSwitchStates()
