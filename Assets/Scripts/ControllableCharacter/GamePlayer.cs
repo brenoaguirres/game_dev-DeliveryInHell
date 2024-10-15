@@ -44,14 +44,7 @@ namespace CBPXL.ControllableCharacter
         }
         private void Update()
         {
-            // input and flags
             UpdateInput();
-
-            // logic
-            //UpdateAttack(aimInput, shootInput, lookInput);
-
-            // animation
-            UpdateAnimation();
         }
 
         #endregion
@@ -99,6 +92,7 @@ namespace CBPXL.ControllableCharacter
             // Data References Setup
             _playerData.Physics = GetComponent<Rigidbody>();
             _playerData.Animator = GetComponentInChildren<Animator>();
+            _playerData.AnimatorEvents = GetComponentInChildren<AnimatorEvents>();
             _playerData.Attack = GetComponentInChildren<AttackPlayer>();
             _playerData.Interactor = GetComponentInChildren<Interact.Interactor>();
 
@@ -118,17 +112,6 @@ namespace CBPXL.ControllableCharacter
             _inputData.ShootInput = _input.Shoot;
             _inputData.InteractInput = _input.Interact;
             _inputData.AimPosInput = _input.AimPos;
-        }
-
-        private void UpdateAttack(bool aim, bool shoot, float look)
-        {
-            //attack.UpdateAttack(aim, shoot, look);
-        }
-        private void UpdateAnimation()
-        {
-            // movement
-            //animator.SetFloat("moveSpeed", Mathf.Abs(walkInput));
-            //animator.SetBool("isRunning", runInput);
         }
         #endregion
     }

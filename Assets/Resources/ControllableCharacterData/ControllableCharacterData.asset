@@ -27,3 +27,7 @@ MonoBehaviour:
   _rangedWeapon: {fileID: 11400000, guid: 628c2d042e0dbb645aceda9453a75817, type: 2}
   _meleeWeapon: {fileID: 11400000, guid: 80b4e5137b3e83442a18f883f9c43508, type: 2}
   _throwableWeapon: {fileID: 0}
+  _canShoot: 1
+  _gunLocked: 1
+  _reloadTimer: 0
+  _shootAnimEnded: 0

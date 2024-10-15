@@ -22,8 +22,13 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public override void EnterState()
         {
             GUN_UNLOCK += OnGunUnlock;
+            Ctx.Data.AnimatorEvents.onAnimationClipEnded += OnShootAnimFinish;
 
+            // Shoot init
             Ctx.Data.Animator.SetBool("Shoot", true);
+            Ctx.Data.ShootAnimEnded = false;
+            Ctx.Data.CanShoot = true;
+            Ctx.Data.GunLocked = false;
         }
 
         public override void UpdateState()
@@ -39,13 +44,14 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public override void ExitState()
         {
             GUN_UNLOCK -= OnGunUnlock;
+            Ctx.Data.AnimatorEvents.onAnimationClipEnded -= OnShootAnimFinish;
 
             Ctx.Data.Animator.SetBool("Shoot", false);
         }
 
         public override void CheckSwitchStates()
         {
-            if (!Ctx.Input.ShootInput && Ctx.Data.CanShoot)
+            if (!Ctx.Input.ShootInput && Ctx.Data.CanShoot && Ctx.Data.ShootAnimEnded)
             {
                 SwitchState(Factory.Aim());
             }
@@ -64,7 +70,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 if (Ctx.Data.CanShoot)
                 {
-                    Debug.Log("Shoot");
+                    Ctx.Data.Animator.SetBool("Shoot", false);
                     Ctx.Data.CanShoot = false;
                 }
                 else if (!Ctx.Data.GunLocked)
@@ -74,7 +80,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             }
             else if (Ctx.Data.RangedWeapon.ActionType == WeaponSystem.ActionType.FULLY_AUTO)
             {
-
+                //TODO: fully auto behavior
             }
             
         }
@@ -88,8 +94,21 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public void OnGunUnlock()
         {
-            Ctx.Data.CanShoot = true;
             Ctx.Data.GunLocked = false;
+            Ctx.Data.CanShoot = true;
+        }
+
+        public void OnShootAnimFinish(AnimationClip clip)
+        {
+            //TODO: Improve this by removing these literals
+            string[] animNames = { "ShootMiddle", "ShootLower", "ShootUpper" };
+
+            foreach (string animName in animNames) {
+                if (clip.name == animName)
+                {
+                    Ctx.Data.ShootAnimEnded = true;
+                }
+            }
         }
         #endregion
     }

@@ -45,6 +45,7 @@ public class ControllableCharacterData : ScriptableObject
     [SerializeField] private bool _canShoot = true;
     [SerializeField] private bool _gunLocked = false;
     [SerializeField] private float _reloadTimer = 0f;
+    [SerializeField] private bool _shootAnimEnded = true;
     #endregion
 
     #region PROPERTIES
@@ -75,16 +76,20 @@ public class ControllableCharacterData : ScriptableObject
     public bool CanShoot { get { return _canShoot; } set { _canShoot = value; } }
     public bool GunLocked { get { return _gunLocked; } set { _gunLocked = value; } }
     public float ReloadTimer { get { return _reloadTimer; } set { _reloadTimer = value; } }
+    public bool ShootAnimEnded { get { return _shootAnimEnded; } set { _shootAnimEnded = value; } }
     // refs
     public Rigidbody Physics { get { return _physics; } set { _physics = value; } }
     public Animator Animator { get { return _animator; } set { _animator = value; } }
+    public AnimatorEvents AnimatorEvents { get { return _animatorEvents; } set { _animatorEvents = value; } }
     public AttackPlayer Attack { get { return _attack; } set { _attack = value; } }
     public Interactor Interactor { get { return _interactor; } set { _interactor = value; } }
     #endregion
 
     #region REFERENCES
     private Rigidbody _physics;
+
     private Animator _animator;
+    private AnimatorEvents _animatorEvents;
 
     private AttackPlayer _attack;
     private Interactor _interactor;
