@@ -17,6 +17,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         #region PROPERTIES
         public bool IsRootState { get { return _isRootState; } }
+        public ControllableCharacterState CurrentSubState { get { return _currentSubState; } }
+        public ControllableCharacterState CurrentSuperState { get { return _currentSuperState; } }
         public ControllableCharacterStateMachine Ctx { get { return _ctx; } }
         public ControllableCharacterStateFactory Factory { get { return _factory; } }
         #endregion

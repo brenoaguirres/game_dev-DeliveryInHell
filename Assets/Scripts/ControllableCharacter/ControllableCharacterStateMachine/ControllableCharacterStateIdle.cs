@@ -38,7 +38,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SwitchState(Factory.Interact());
             }
-            if (Ctx.Input.AimInput)
+            else if (Ctx.Input.AimInput)
             {
                 SwitchState(Factory.Aim());
             }
@@ -53,6 +53,10 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             else if (Ctx.Input.CrouchInput)
             {
                 SwitchState(Factory.Crouch());
+            }
+            else if (Ctx.Input.LookUpInput)
+            {
+                SwitchState(Factory.LookUp());
             }
         }
 

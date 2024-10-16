@@ -1,54 +1,65 @@
-using CBPXL.ControllableCharacter.ControllableCharacterStateMachine;
 using UnityEngine;
 
-public class ControllableCharacterStateCrouch : ControllableCharacterState
+namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
-    #region CONSTRUCTOR
-    public ControllableCharacterStateCrouch(ControllableCharacterStateMachine currentContext,
-        ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
+    public class ControllableCharacterStateCrouch : ControllableCharacterState
     {
-    }
-    #endregion
-    
-    #region STATE METHODS
-    public override void EnterState()
-    {
-        Ctx.Data.Animator.SetBool("Crouch", true);
-    }
-        
-    public override void UpdateState()
-    {
-        CheckSwitchStates();
-        UpdateCrouch();
-    }
-    public override void FixedUpdateState()
-    {
-    }
+        #region CONSTRUCTOR
 
-    public override void ExitState()
-    {
-        Ctx.Data.Animator.SetBool("Crouch", false);
-    }
-    public override void CheckSwitchStates()
-    {
-        if (Ctx.Input.HorizontalInput > 0.05f || Ctx.Input.HorizontalInput < -0.05f)
+        public ControllableCharacterStateCrouch(ControllableCharacterStateMachine currentContext,
+            ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
         {
-            SwitchState(Factory.CrouchWalk());
         }
-        else if (!Ctx.Input.CrouchInput)
+
+        #endregion
+
+        #region STATE METHODS
+
+        public override void EnterState()
         {
-            SwitchState(Factory.Ground());
+            Ctx.Data.Animator.SetBool("Crouch", true);
         }
+
+        public override void UpdateState()
+        {
+            CheckSwitchStates();
+            UpdateCrouch();
+        }
+
+        public override void FixedUpdateState()
+        {
+        }
+
+        public override void ExitState()
+        {
+            Ctx.Data.Animator.SetBool("Crouch", false);
+        }
+
+        public override void CheckSwitchStates()
+        {
+            if (Ctx.Input.HorizontalInput > 0.05f || Ctx.Input.HorizontalInput < -0.05f)
+            {
+                SwitchState(Factory.CrouchWalk());
+            }
+            else if (!Ctx.Input.CrouchInput)
+            {
+                SwitchState(Factory.Ground());
+            }
+        }
+
+        public override void InitializeSubState()
+        {
+
+        }
+
+        #endregion
+
+        #region BEHAVIOR METHODS
+
+        private void UpdateCrouch()
+        {
+        }
+
+        #endregion
     }
-    public override void InitializeSubState()
-    {
-        
-    }
-    #endregion
-    
-    #region BEHAVIOR METHODS
-    private void UpdateCrouch()
-    {
-    }
-    #endregion
 }

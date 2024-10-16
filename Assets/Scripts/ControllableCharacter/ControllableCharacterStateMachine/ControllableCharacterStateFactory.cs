@@ -78,6 +78,11 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             return new ControllableCharacterStateFallWalk(_context, this);
         }
+
+        public ControllableCharacterStateLookUp LookUp()
+        {
+            return new ControllableCharacterStateLookUp(_context, this);
+        }
         #endregion
     }
 }

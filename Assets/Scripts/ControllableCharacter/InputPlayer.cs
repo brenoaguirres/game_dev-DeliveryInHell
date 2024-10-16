@@ -20,6 +20,7 @@ namespace CBPXL.ControllableCharacter
         private bool interact = false;
         private float aimPos = 0;
         private bool crouch = false;
+        private bool lookUp = false;
         #endregion
 
         #region PROPERTIES
@@ -32,6 +33,7 @@ namespace CBPXL.ControllableCharacter
         public bool Interact { get => interact; }
         public float AimPos { get => aimPos; }
         public bool Crouch { get => crouch; }
+        public bool LookUp { get => lookUp; }
         #endregion
 
         #region DEFAULT METHODS
@@ -91,6 +93,11 @@ namespace CBPXL.ControllableCharacter
             inputs.Player.Crouch.started += CrouchInput;
             inputs.Player.Crouch.performed += CrouchInput;
             inputs.Player.Crouch.canceled += CrouchInput;
+            
+            // lookup input
+            inputs.Player.Look.started += LookUpInput;
+            inputs.Player.Look.performed += LookUpInput;
+            inputs.Player.Look.canceled += LookUpInput;
         }
 
         private void OnDisable()
@@ -141,6 +148,11 @@ namespace CBPXL.ControllableCharacter
             inputs.Player.Crouch.started -= CrouchInput;
             inputs.Player.Crouch.performed -= CrouchInput;
             inputs.Player.Crouch.canceled -= CrouchInput;
+            
+            // lookup input
+            inputs.Player.Look.started -= LookUpInput;
+            inputs.Player.Look.performed -= LookUpInput;
+            inputs.Player.Look.canceled -= LookUpInput;
         }
         #endregion
 
@@ -180,6 +192,10 @@ namespace CBPXL.ControllableCharacter
         private void CrouchInput(InputAction.CallbackContext context)
         {
             crouch = context.ReadValueAsButton();
+        }
+        private void LookUpInput(InputAction.CallbackContext context)
+        {
+            lookUp = context.ReadValueAsButton();
         }
         #endregion
     }

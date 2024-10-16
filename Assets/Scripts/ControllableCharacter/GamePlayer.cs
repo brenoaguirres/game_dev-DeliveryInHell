@@ -11,6 +11,10 @@ namespace CBPXL.ControllableCharacter
     public class GamePlayer : MonoBehaviour
     {
         #region FIELDS
+        [Header("Debug Mode")] 
+        [SerializeField] private bool _debugMode = false;
+        
+        [Space(2)]
         [Header("Settings")]
         [SerializeField] private ControllableCharacterData _playerData;
         [SerializeField] private ControllableCharacterDataInput _inputData;
@@ -45,6 +49,11 @@ namespace CBPXL.ControllableCharacter
         private void Update()
         {
             UpdateInput();
+
+            if (_debugMode)
+            {
+                GetCurrentState(_stateMachine.CurrentState);
+            }
         }
 
         #endregion
@@ -112,6 +121,21 @@ namespace CBPXL.ControllableCharacter
             _inputData.InteractInput = _input.Interact;
             _inputData.AimPosInput = _input.AimPos;
             _inputData.CrouchInput = _input.Crouch;
+            _inputData.LookUpInput = _input.LookUp;
+        }
+        #endregion
+
+        #region DEBUG METHODS
+        private void GetCurrentState(CBPXLStateMachine.ControllableCharacterState state)
+        {
+            if (state.CurrentSubState == null)
+            {
+                Debug.Log(state.GetType().Name);
+            }
+            else
+            {
+                GetCurrentState(state.CurrentSubState);
+            }
         }
         #endregion
     }
