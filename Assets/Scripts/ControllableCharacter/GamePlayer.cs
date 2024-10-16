@@ -111,6 +111,7 @@ namespace CBPXL.ControllableCharacter
             _inputData.ShootInput = _input.Shoot;
             _inputData.InteractInput = _input.Interact;
             _inputData.AimPosInput = _input.AimPos;
+            _inputData.CrouchInput = _input.Crouch;
         }
         #endregion
     }

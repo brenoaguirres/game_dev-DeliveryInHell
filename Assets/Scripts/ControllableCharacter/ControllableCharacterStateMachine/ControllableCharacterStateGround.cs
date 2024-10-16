@@ -61,6 +61,10 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SetSubState(Factory.Run());
             }
+            else if (Ctx.Input.CrouchInput)
+            {
+                SetSubState(Factory.Crouch());
+            }
         }
         #endregion
     }

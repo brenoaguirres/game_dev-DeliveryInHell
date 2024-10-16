@@ -41,6 +41,10 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SwitchState(Factory.Idle());
             }
+            else if (Ctx.Input.CrouchInput)
+            {
+                SwitchState(Factory.Crouch());
+            }
             else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && Ctx.Input.RunInput)
             {
                 SwitchState(Factory.Run());

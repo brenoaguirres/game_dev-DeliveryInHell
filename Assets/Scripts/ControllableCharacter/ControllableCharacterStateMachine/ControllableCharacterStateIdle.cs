@@ -50,6 +50,10 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SwitchState(Factory.Run());
             }
+            else if (Ctx.Input.CrouchInput)
+            {
+                SwitchState(Factory.Crouch());
+            }
         }
 
         public override void InitializeSubState()

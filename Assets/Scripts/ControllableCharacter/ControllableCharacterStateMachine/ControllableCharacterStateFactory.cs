@@ -63,6 +63,21 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             return new ControllableCharacterStateShoot(_context, this);
         }
+
+        public ControllableCharacterStateCrouch Crouch()
+        {
+            return new ControllableCharacterStateCrouch(_context, this);
+        }
+
+        public ControllableCharacterStateCrouchWalk CrouchWalk()
+        {
+            return new ControllableCharacterStateCrouchWalk(_context, this);
+        }
+
+        public ControllableCharacterStateFallWalk FallWalk()
+        {
+            return new ControllableCharacterStateFallWalk(_context, this);
+        }
         #endregion
     }
 }
