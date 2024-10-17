@@ -1,26 +1,27 @@
 using System.Collections.Generic;
-using CBPXL.DialogueSystem;
 using CBPXL.InteractSystem;
 using UnityEngine;
 
-[RequireComponent(typeof(HighlightObject))]
-public class Dialogue : MonoBehaviour, IInteractable
+namespace CBPXL.DialogueSystem
 {
-    #region FIELDS
-    [Header("Text")]
-    [SerializeField] private string[] _lines;
-    #endregion
-
-    #region REFERENCES
-    [Header("Dialogue Box")]
-    [SerializeField] private DialogueBox _dBox;
-    #endregion
-
-    #region CUSTOM METHODS
-    public void OnInteract()
+    public class Dialogue : MonoBehaviour, IInteractable
     {
-        _dBox.ChangeText(_lines);
-        _dBox.gameObject.SetActive(true);
+        #region FIELDS
+        [Header("Text")]
+        [SerializeField] private string[] _lines;
+        #endregion
+
+        #region REFERENCES
+        [Header("Dialogue Box")]
+        [SerializeField] private DialogueBox _dBox;
+        #endregion
+
+        #region CUSTOM METHODS
+        public void OnInteract()
+        {
+            _dBox.ChangeText(_lines);
+            _dBox.gameObject.SetActive(true);
+        }
+        #endregion
     }
-    #endregion
 }

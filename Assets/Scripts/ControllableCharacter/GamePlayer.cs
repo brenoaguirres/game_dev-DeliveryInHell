@@ -103,6 +103,7 @@ namespace CBPXL.ControllableCharacter
             _playerData.Animator = GetComponentInChildren<Animator>();
             _playerData.AnimatorEvents = GetComponentInChildren<AnimatorEvents>();
             _playerData.Interactor = GetComponentInChildren<Interact.Interactor>();
+            _playerData.Inspector = GetComponentInChildren<InspectionSystem.Inspector>();
 
             // Jump State Setup
             _playerData.JumpBasePosition = _jumpBasePosition;

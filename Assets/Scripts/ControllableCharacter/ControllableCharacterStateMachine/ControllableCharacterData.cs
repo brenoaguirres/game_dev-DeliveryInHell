@@ -92,6 +92,7 @@ public class ControllableCharacterData : ScriptableObject
     public Animator Animator { get { return _animator; } set { _animator = value; } }
     public AnimatorEvents AnimatorEvents { get { return _animatorEvents; } set { _animatorEvents = value; } }
     public Interactor Interactor { get { return _interactor; } set { _interactor = value; } }
+    public CBPXL.InspectionSystem.Inspector Inspector { get { return _inspector; } set { _inspector = value; } }
     #endregion
 
     #region REFERENCES
@@ -101,5 +102,6 @@ public class ControllableCharacterData : ScriptableObject
     private AnimatorEvents _animatorEvents;
 
     private Interactor _interactor;
+    private CBPXL.InspectionSystem.Inspector _inspector;
     #endregion
 }

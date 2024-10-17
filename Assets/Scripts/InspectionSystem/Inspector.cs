@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
+using CBPXL.InteractSystem;
 using UnityEngine;
 
-namespace CBPXL.InteractSystem
+namespace CBPXL.InspectionSystem
 {
-    public class Interactor : MonoBehaviour
+    public class Inspector : MonoBehaviour
     {
         #region FIELDS
-        private bool _interacting = false;
+        private bool _inspecting = false;
         private bool _insideArea = false;
         #endregion
 
         #region PROPERTIES
-        public bool Interacting {  get { return _interacting; } set { _interacting = value; } }
-        public bool InsideArea { get { return _insideArea; }}
+        public bool Inspecting { get { return _inspecting; } set { _inspecting = value; } }
+        public bool InsideArea { get { return _insideArea; } }
         #endregion
 
         #region REFERENCES
@@ -22,43 +22,39 @@ namespace CBPXL.InteractSystem
         private List<Collider> _cleanableColliders = new List<Collider>();
         #endregion
 
-        // if this do not works properly, try Physics.OverlapBox instead
         #region DEFAULT METHODS
         public void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<IInteractable>() != null)
+            if (other.GetComponent<IInspectable>() != null)
             {
                 _insideArea = true;
                 _colliderObjects.Add(other);
-                Highlight(other, true);
             }
         }
         public void OnTriggerExit(Collider other)
         {
-            if (other.GetComponent<IInteractable>() != null)
+            if (other.GetComponent<IInspectable>() != null)
             {
                 _insideArea = false;
                 _cleanableColliders.Add(other);
                 StartCoroutine(CleanInteractableArray());
-
-                Highlight(other, false);
             }
         }
         #endregion
 
         #region CUSTOM METHODS
-        public void Interact()
+        public void Inspect()
         {
-            if (_insideArea && _interacting)
+            if (_insideArea && _inspecting)
             {
                 foreach (Collider collider in _colliderObjects)
                 {
-                    IInteractable interactable;
-                    collider.gameObject.TryGetComponent<IInteractable>(out interactable);
-                    if (interactable != null)
+                    IInspectable inspectable;
+                    collider.gameObject.TryGetComponent<IInspectable>(out inspectable);
+                    if (inspectable != null)
                     {
-                        interactable.OnInteract();
-                        _interacting = false;
+                        inspectable.OnInspect();
+                        _inspecting = false;
                         return;
                     }
                 }
