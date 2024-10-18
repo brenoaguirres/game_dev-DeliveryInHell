@@ -5,6 +5,7 @@ using CBPXLStateMachine = CBPXL.ControllableCharacter.ControllableCharacterState
 using Interact = CBPXL.InteractSystem;
 using System;
 using UnityEditor;
+using CBPXL.ClimbingSystem;
 
 namespace CBPXL.ControllableCharacter
 {
@@ -104,6 +105,7 @@ namespace CBPXL.ControllableCharacter
             _playerData.AnimatorEvents = GetComponentInChildren<AnimatorEvents>();
             _playerData.Interactor = GetComponentInChildren<Interact.Interactor>();
             _playerData.Inspector = GetComponentInChildren<InspectionSystem.Inspector>();
+            _playerData.Climber = GetComponentInChildren<Climber>();
 
             // Jump State Setup
             _playerData.JumpBasePosition = _jumpBasePosition;

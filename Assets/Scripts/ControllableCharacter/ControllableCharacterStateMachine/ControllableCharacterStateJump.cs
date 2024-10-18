@@ -16,7 +16,8 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         #region STATE METHODS
         public override void EnterState()
         {
-
+            Ctx.Data.Animator.SetBool("Jump", true);
+            Ctx.Data.Climber.onTouchClimbable += CheckClimbing;
         }
         
         public override void UpdateState()
@@ -32,12 +33,18 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void ExitState()
         {
+            Ctx.Data.Animator.SetBool("Jump", false);
+            Ctx.Data.Climber.onTouchClimbable -= CheckClimbing;
         }
 
         public override void CheckSwitchStates()
         {
             // FIX: very slow return due to lack of fall state (this methods remains being called after state change
-            if (Ctx.Data.Physics.linearVelocity.y <= 0.1f && !Ctx.Input.JumpInput)
+            if (Ctx.Data.WithinClimbRange && Ctx.Input.JumpInput && !Ctx.Data.IsGrounded)
+            {
+                SwitchState(Factory.Climb());
+            }
+            else if (Ctx.Data.Physics.linearVelocity.y <= 0.1f && !Ctx.Input.JumpInput)
             {
                 SwitchState(Factory.Fall());
             }
@@ -47,7 +54,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
             {
-                SetSubState(Factory.Walk());
+                SetSubState(Factory.AirborneWalk());
             }
         }
         #endregion
@@ -56,6 +63,10 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         public void CheckGrounded()
         {
             Ctx.Data.IsGrounded = Physics.Raycast(Ctx.Data.JumpBasePosition.position, -Ctx.Data.JumpBasePosition.up, Ctx.Data.MaxGroundCheckDist, Ctx.Data.GroundLayer);
+        }
+        public void CheckClimbing(bool climbing)
+        {
+            Ctx.Data.WithinClimbRange = climbing;
         }
         public void UpdateJump()
         {

@@ -19,6 +19,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void EnterState()
         {
+            Ctx.Data.Animator.SetBool("Fall", true);
         }
 
         public override void UpdateState()
@@ -33,6 +34,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void ExitState()
         {
+            Ctx.Data.Animator.SetBool("Fall", false);
         }
 
         public override void CheckSwitchStates()
@@ -47,7 +49,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
             {
-                SetSubState(Factory.Walk());
+                SetSubState(Factory.AirborneWalk());
             }
         }
 

@@ -1,3 +1,4 @@
+using CBPXL.ClimbingSystem;
 using CBPXL.ControllableCharacter;
 using CBPXL.InteractSystem;
 using CBPXL.WeaponSystem;
@@ -52,6 +53,10 @@ public class ControllableCharacterData : ScriptableObject
     [SerializeField] private bool _gunLocked = false;
     [SerializeField] private float _reloadTimer = 0f;
     [SerializeField] private bool _shootAnimEnded = true;
+
+    [Space(2)]
+    [Header("Climb")]
+    [SerializeField] private bool _withinClimbRange = false;
     #endregion
 
     #region PROPERTIES
@@ -92,7 +97,10 @@ public class ControllableCharacterData : ScriptableObject
     public Animator Animator { get { return _animator; } set { _animator = value; } }
     public AnimatorEvents AnimatorEvents { get { return _animatorEvents; } set { _animatorEvents = value; } }
     public Interactor Interactor { get { return _interactor; } set { _interactor = value; } }
+    public Climber Climber { get { return _climber; } set { _climber = value; } }
     public CBPXL.InspectionSystem.Inspector Inspector { get { return _inspector; } set { _inspector = value; } }
+    // climb
+    public bool WithinClimbRange { get { return _withinClimbRange; } set { _withinClimbRange = value; } }
     #endregion
 
     #region REFERENCES
@@ -103,5 +111,6 @@ public class ControllableCharacterData : ScriptableObject
 
     private Interactor _interactor;
     private CBPXL.InspectionSystem.Inspector _inspector;
+    private Climber _climber;
     #endregion
 }

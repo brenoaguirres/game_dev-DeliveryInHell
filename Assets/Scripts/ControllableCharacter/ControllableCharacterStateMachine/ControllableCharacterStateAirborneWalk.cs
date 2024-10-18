@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 {
-    public class ControllableCharacterStateWalk : ControllableCharacterState
+    public class ControllableCharacterStateAirborneWalk : ControllableCharacterState
     {
         #region CONSTRUCTOR
 
-        public ControllableCharacterStateWalk(ControllableCharacterStateMachine currentContext,
+        public ControllableCharacterStateAirborneWalk(ControllableCharacterStateMachine currentContext,
             ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
         {
         }
@@ -17,7 +17,6 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void EnterState()
         {
-            Ctx.Data.Animator.SetBool("Walk", true);
         }
 
         public override void UpdateState()
@@ -32,26 +31,13 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
 
         public override void ExitState()
         {
-            Ctx.Data.Animator.SetBool("Walk", false);
         }
 
         public override void CheckSwitchStates()
         {
-            if (Ctx.Input.JumpInput)
-            {
-                SwitchState(Factory.Jump());
-            }
-            else if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
+            if (!(Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05))
             {
                 SwitchState(Factory.Idle());
-            }
-            else if (Ctx.Input.CrouchInput)
-            {
-                SwitchState(Factory.Crouch());
-            }
-            else if ((Ctx.Input.HorizontalInput >= 0.05 || Ctx.Input.HorizontalInput <= -0.05) && Ctx.Input.RunInput)
-            {
-                SwitchState(Factory.Run());
             }
         }
 
@@ -85,3 +71,4 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         #endregion
     }
 }
+

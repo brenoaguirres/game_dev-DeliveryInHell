@@ -22,6 +22,9 @@ MonoBehaviour:
     m_Bits: 8
   _maxGroundCheckDist: 0.2
   _jumpBasePosition: {fileID: 0}
+  _crouchSpeed: 2.5
+  _defaultColliderSize: {x: 0, y: 0, z: 0}
+  _crouchedColliderSize: {x: 0, y: 0, z: 0}
   _lowerAimMouseThreshold: 200
   _upperAimMouseThreshold: 400
   _rangedWeapon: {fileID: 11400000, guid: 628c2d042e0dbb645aceda9453a75817, type: 2}
@@ -31,3 +34,4 @@ MonoBehaviour:
   _gunLocked: 1
   _reloadTimer: 0
   _shootAnimEnded: 0
+  _withinClimbRange: 0

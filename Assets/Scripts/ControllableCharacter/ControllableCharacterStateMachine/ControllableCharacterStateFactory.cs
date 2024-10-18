@@ -83,6 +83,16 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
         {
             return new ControllableCharacterStateLookUp(_context, this);
         }
+
+        public ControllableCharacterStateClimb Climb()
+        {
+            return new ControllableCharacterStateClimb(_context, this);
+        }
+
+        public ControllableCharacterStateAirborneWalk AirborneWalk()
+        {
+            return new ControllableCharacterStateAirborneWalk(_context, this);
+        }
         #endregion
     }
 }
