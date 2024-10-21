@@ -7,11 +7,13 @@ namespace CBPXL.ClimbingSystem
     {
         #region FIELDS
         [SerializeField] private List<Transform> _grabPoints;
+        [SerializeField] private List<Transform> _upperPoints;
         [SerializeField] private ClimbType _type = ClimbType.LEDGE;
         #endregion
 
         #region PROPERTIES
         public List<Transform> GrabPoints { get { return _grabPoints; } }
+        public List<Transform> UpperPoints { get { return _upperPoints; } }
         public ClimbType Type { get { return _type; } }
         #endregion
 

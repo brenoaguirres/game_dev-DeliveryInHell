@@ -12,6 +12,7 @@ namespace CBPXL.ClimbingSystem
     {
         #region FIELDS
         private bool _touchingClimbable = false;
+        [SerializeField] private Transform _climberPosition;
         #endregion
 
         #region PROPERTIES
@@ -31,12 +32,17 @@ namespace CBPXL.ClimbingSystem
                 }
             } 
         }
+        
+        public Transform ClimberPosition { get { return _climberPosition; } set { _climberPosition = value; } }
         public List<Collider> Climbables { get { return _climbables; } }
+        public GameObject PlayerGameObject { get { return _playerGameObject; } }
         #endregion
 
         #region REFERENCES
         private List<Collider> _climbables = new List<Collider>();
         private List<Collider> _cleanableColliders = new List<Collider>();
+        [SerializeField] private GameObject _playerGameObject;
+        
         #endregion
 
         #region EVENTS

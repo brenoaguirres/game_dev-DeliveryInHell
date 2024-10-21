@@ -1,61 +1,75 @@
 using CBPXL.ClimbingSystem;
 using CBPXL.ControllableCharacter.ControllableCharacterStateMachine;
 using UnityEngine;
-using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class ControllableCharacterStateClimb : ControllableCharacterState
 {
     #region FIELDS
-    private bool _isClimbing = true;
-    private bool _finishedClimbAnimation = true;
+    private bool _finishedClimbAnimation = false;
+    private bool _isHanging = true;
+    private Transform _grabPoint;
+    private Transform _landingPoint;
+    private Climbable _closestClimbable;
+    
+    // position update
+    private float _lerpSpeed = 0.1f;
+    private float _lerpTime = 0f;
+    private Vector3 _startingPos;
     #endregion
     #region CONSTRUCTOR
     public ControllableCharacterStateClimb(ControllableCharacterStateMachine currentContext,
         ControllableCharacterStateFactory stateFactory) : base(currentContext, stateFactory)
     {
+        _isRootState = true;
+        InitializeSubState();
     }
     #endregion
 
     #region STATE METHODS
     public override void EnterState()
     {
-        Transform grabPoint = SelectClimbPoint();
-        if (grabPoint == null) return;
+        Ctx.Data.AnimatorEvents.onAnimationClipEnded += OnClimbAnimFinish;
+        
+        _grabPoint = SelectClimbPoint();
+        if (_grabPoint == null) OnNoGrabPointFound();
+        if (_grabPoint != null)
+            _landingPoint = SelectLandingPoint(_grabPoint);
 
         Ctx.Data.Animator.SetBool("Hang", true);
-        Ctx.Data.Physics.isKinematic = true;
-        Ctx.Data.Physics.useGravity = false;
-        Ctx.transform.position = grabPoint.position;
+        
+        _startingPos = Ctx.Data.Climber.ClimberPosition.position;
+        LockPhysics();
     }
 
     public override void UpdateState()
     {
         CheckSwitchStates();
+        UpdateClimb();
     }
 
     public override void FixedUpdateState()
     {
-        UpdateClimb();
+        
     }
 
     public override void ExitState()
     {
-        Ctx.Data.Physics.isKinematic = false;
+        Ctx.Data.AnimatorEvents.onAnimationClipEnded -= OnClimbAnimFinish;
+        //Ctx.Data.Physics.isKinematic = false;
     }
 
     public override void CheckSwitchStates()
     {
         //TODO: fix switch states
-        if (!Ctx.Data.WithinClimbRange && Ctx.Data.IsGrounded || _isClimbing && _finishedClimbAnimation)
+        if ((!Ctx.Data.WithinClimbRange && Ctx.Data.IsGrounded || _finishedClimbAnimation) && !_isHanging)
         {
-            Ctx.Data.Physics.isKinematic = false;
-            Ctx.Data.Physics.useGravity = true;
-            SwitchState(Factory.Idle());
+            UnlockPhysics();
+            SwitchState(Factory.Ground());
         }
-        else if (!Ctx.Data.WithinClimbRange && !Ctx.Data.IsGrounded)
+        else if (!Ctx.Data.WithinClimbRange && !Ctx.Data.IsGrounded && !_isHanging)
         {
-            Ctx.Data.Physics.isKinematic = false;
-            Ctx.Data.Physics.useGravity = true;
+            UnlockPhysics();
             SwitchState(Factory.Fall());
         }
     }
@@ -68,16 +82,18 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
     #region BEHAVIOR METHODS
     public void UpdateClimb()
     {
-        if (Ctx.Input.AimInput && _finishedClimbAnimation)
+        if (!_isHanging && !_finishedClimbAnimation)
+            UpdateClimbPos();
+        
+        if (Ctx.Input.AimInput && !_finishedClimbAnimation)
         {
-            _finishedClimbAnimation = false;
+            _isHanging = false;
             Ctx.Data.Animator.SetBool("Hang", false);
             Ctx.Data.Animator.SetBool("Climb", true);
-            _isClimbing = false;
         }
-        else if (Ctx.Input.ShootInput && _finishedClimbAnimation) //TODO: Change to correct input later on -> circle
+        else if (Ctx.Input.ShootInput && !_finishedClimbAnimation) //TODO: Change to correct input later on -> circle
         {
-            _isClimbing = false;
+            _isHanging = false;
             Ctx.Data.Animator.SetBool("Hang", false);
         }
     }
@@ -107,6 +123,8 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
         }
 
         Climbable currentClosest = closestClimbable.GetComponent<Climbable>();
+        _closestClimbable = currentClosest;
+        
         Transform closestGrabPoint = null;
         if (currentClosest.GrabPoints.Count > 1)
         {
@@ -134,8 +152,58 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
         }
     }
 
+    public Transform SelectLandingPoint(Transform grabPoint)
+    {
+        int index = _closestClimbable.GrabPoints.IndexOf(grabPoint);
+        return _closestClimbable.UpperPoints[index];
+    }
+    
     public void OnClimbAnimFinish(AnimationClip clip)
     {
+        //TODO: Improve this by removing these literals
+        string[] animNames = { "Climb" };
+
+        foreach (string animName in animNames) {
+            if (clip.name == animName)
+            {
+                _finishedClimbAnimation = true;
+            }
+        }
+    }
+
+    public void UpdateClimbPos()
+    {
+        _lerpTime += Time.deltaTime * _lerpSpeed;
+        _lerpTime = Mathf.Clamp01(_lerpTime);
+        
+        Ctx.Data.Climber.ClimberPosition.position = 
+            Vector3.Lerp(_startingPos, _landingPoint.position, _lerpTime);
+    }
+
+    public void LockPhysics()
+    {
+        Ctx.Data.Physics.isKinematic = true;
+        Ctx.Data.Physics.useGravity = false;
+
+        Ctx.Data.Climber.ClimberPosition.SetParent(null);
+        Ctx.Data.Climber.PlayerGameObject.transform.SetParent(Ctx.Data.Climber.ClimberPosition);
+        
+        Ctx.Data.Climber.ClimberPosition.position = _grabPoint.position;
+    }
+
+    public void UnlockPhysics()
+    {
+        Ctx.Data.Climber.PlayerGameObject.transform.SetParent(null);
+        Ctx.Data.Climber.ClimberPosition.SetParent(Ctx.Data.Climber.transform);
+        
+        Ctx.Data.Physics.isKinematic = false;
+        Ctx.Data.Physics.useGravity = true;
+    }
+
+    public void OnNoGrabPointFound()
+    {
+        _isHanging = false;
+        Ctx.Data.WithinClimbRange = false;
         _finishedClimbAnimation = true;
     }
     #endregion
