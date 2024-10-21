@@ -69,6 +69,11 @@ namespace CBPXL.ClimbingSystem
                 StartCoroutine(CleanInteractableArray());
             }
         }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_climberPosition.position, 0.6f);
+        }
         #endregion
 
         #region CUSTOM METHODS

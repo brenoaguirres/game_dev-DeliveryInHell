@@ -33,7 +33,11 @@ namespace CBPXL.ClimbingSystem
         {
             Gizmos.color = Color.yellow;
             foreach (Transform t in _grabPoints)
-                Gizmos.DrawWireSphere(t.position, 1f);
+                Gizmos.DrawWireSphere(t.position, 0.4f);
+            
+            Gizmos.color = Color.blue;
+            foreach (Transform t in _upperPoints)
+                Gizmos.DrawWireSphere(t.position, 0.4f);
         }
         #endregion
     }
