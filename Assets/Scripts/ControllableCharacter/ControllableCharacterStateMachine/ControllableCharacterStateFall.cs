@@ -43,6 +43,7 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             {
                 SwitchState(Factory.Ground());
             }
+            // TODO: add switch from fall to climb
         }
 
         public override void InitializeSubState()

@@ -56,18 +56,16 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
     public override void ExitState()
     {
         Ctx.Data.AnimatorEvents.onAnimationClipEnded -= OnClimbAnimFinish;
-        //Ctx.Data.Physics.isKinematic = false;
     }
 
     public override void CheckSwitchStates()
     {
         //TODO: fix switch states
-        if ((!Ctx.Data.WithinClimbRange && Ctx.Data.IsGrounded || _finishedClimbAnimation) && !_isHanging)
+        if ((!Ctx.Data.WithinClimbRange && Ctx.Data.IsGrounded || _finishedClimbAnimation) && !_isHanging && Ctx.Input.AimInput)
         {
-            UnlockPhysics();
             SwitchState(Factory.Ground());
         }
-        else if (!Ctx.Data.WithinClimbRange && !Ctx.Data.IsGrounded && !_isHanging)
+        else if ((!Ctx.Data.WithinClimbRange && !Ctx.Data.IsGrounded || _finishedClimbAnimation) && !_isHanging && Ctx.Input.ShootInput)
         {
             UnlockPhysics();
             SwitchState(Factory.Fall());
@@ -167,17 +165,21 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
             if (clip.name == animName)
             {
                 _finishedClimbAnimation = true;
+                UnlockPhysics();
             }
         }
     }
 
     public void UpdateClimbPos()
     {
+        Ctx.Data.Climber.ClimberPosition.position = _landingPoint.position;
+        /*
         _lerpTime += Time.deltaTime * _lerpSpeed;
         _lerpTime = Mathf.Clamp01(_lerpTime);
         
         Ctx.Data.Climber.ClimberPosition.position = 
             Vector3.Lerp(_startingPos, _landingPoint.position, _lerpTime);
+        */
     }
 
     public void LockPhysics()
@@ -193,6 +195,7 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
 
     public void UnlockPhysics()
     {
+        Debug.Log("Unlock");
         Ctx.Data.Climber.PlayerGameObject.transform.SetParent(null);
         Ctx.Data.Climber.ClimberPosition.SetParent(Ctx.Data.Climber.transform);
         
