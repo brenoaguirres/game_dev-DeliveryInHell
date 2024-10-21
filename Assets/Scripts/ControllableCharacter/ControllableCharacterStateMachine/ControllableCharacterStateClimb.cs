@@ -45,6 +45,7 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
     public override void UpdateState()
     {
         CheckSwitchStates();
+        CheckGrounded();
         UpdateClimb();
     }
 
@@ -55,13 +56,18 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
 
     public override void ExitState()
     {
+        UnlockPhysics();
         Ctx.Data.AnimatorEvents.onAnimationClipEnded -= OnClimbAnimFinish;
+        Ctx.Data.WithinClimbRange = false;
+        _finishedClimbAnimation = false;
+        _isHanging = true;
+        Ctx.Data.Animator.SetBool("Climb", false);
     }
 
     public override void CheckSwitchStates()
     {
         //TODO: fix switch states
-        if ((!Ctx.Data.WithinClimbRange && Ctx.Data.IsGrounded || _finishedClimbAnimation) && !_isHanging && Ctx.Input.AimInput)
+        if ((!Ctx.Data.WithinClimbRange && Ctx.Data.IsGrounded || _finishedClimbAnimation) && !_isHanging)
         {
             SwitchState(Factory.Ground());
         }
@@ -195,7 +201,6 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
 
     public void UnlockPhysics()
     {
-        Debug.Log("Unlock");
         Ctx.Data.Climber.PlayerGameObject.transform.SetParent(null);
         Ctx.Data.Climber.ClimberPosition.SetParent(Ctx.Data.Climber.transform);
         
@@ -208,6 +213,11 @@ public class ControllableCharacterStateClimb : ControllableCharacterState
         _isHanging = false;
         Ctx.Data.WithinClimbRange = false;
         _finishedClimbAnimation = true;
+    }
+
+    public void CheckGrounded()
+    {
+        Ctx.Data.IsGrounded = Physics.Raycast(Ctx.Data.JumpBasePosition.position, -Ctx.Data.JumpBasePosition.up, Ctx.Data.MaxGroundCheckDist, Ctx.Data.GroundLayer);
     }
     #endregion
 }

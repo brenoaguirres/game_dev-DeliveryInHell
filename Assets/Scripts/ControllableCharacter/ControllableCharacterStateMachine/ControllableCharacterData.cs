@@ -27,7 +27,7 @@ public class ControllableCharacterData : ScriptableObject
     [SerializeField] private float _maxJumpTime = 1f;
     private float _currentJumpForce = 0f;
     private bool _canJump = false;
-    private bool _isGrounded = true;
+    [SerializeField] private bool _isGrounded = true;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _maxGroundCheckDist = 1f;
     [Tooltip("The position in which the character's feet is located.")]
