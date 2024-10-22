@@ -65,9 +65,18 @@ namespace CBPXL.ControllableCharacter.ControllableCharacterStateMachine
             }
         }
 
-        protected void SwitchState(ControllableCharacterState newState)
+        public void ExitStates()
         {
             ExitState();
+            if (_currentSubState != null)
+            {
+                _currentSubState.ExitState();
+            }
+        }
+
+        protected void SwitchState(ControllableCharacterState newState)
+        {
+            ExitStates();
             newState.EnterState();
 
             if (_isRootState)

@@ -8,7 +8,7 @@ namespace CBPXL.Utils
     public class MultipleCollisionManager : MonoBehaviour
     {
         #region FIELDS
-        private List<CollisionProvider> _providers;
+        private List<CollisionProvider> _providers = new();
         #endregion
 
         #region PROPERTIES
@@ -53,27 +53,27 @@ namespace CBPXL.Utils
         #endregion
 
         #region CUSTOM METHODS
-        public void OnCollisionEnterCustom(GameObject providerInfo, Collision collisionInfo)
+        private void OnCollisionEnterCustom(GameObject providerInfo, Collision collisionInfo)
         {
             ON_COLLISION_ENTER?.Invoke(providerInfo, collisionInfo);
         }
-        public void OnCollisionStayCustom(GameObject providerInfo, Collision collisionInfo)
+        private void OnCollisionStayCustom(GameObject providerInfo, Collision collisionInfo)
         {
             ON_COLLISION_STAY?.Invoke(providerInfo, collisionInfo);
         }
-        public void OnCollisionExitCustom(GameObject providerInfo, Collision collisionInfo)
+        private void OnCollisionExitCustom(GameObject providerInfo, Collision collisionInfo)
         {
             ON_COLLISION_EXIT?.Invoke(providerInfo, collisionInfo);
         }
-        public void OnTriggerEnterCustom(GameObject providerInfo, Collider colliderInfo)
+        private void OnTriggerEnterCustom(GameObject providerInfo, Collider colliderInfo)
         {
             ON_TRIGGER_ENTER?.Invoke(providerInfo, colliderInfo);
         }
-        public void OnTriggerStayCustom(GameObject providerInfo, Collider colliderInfo)
+        private void OnTriggerStayCustom(GameObject providerInfo, Collider colliderInfo)
         {
             ON_TRIGGER_STAY?.Invoke(providerInfo, colliderInfo);
         }
-        public void OnTriggerExitCustom(GameObject providerInfo, Collider colliderInfo)
+        private void OnTriggerExitCustom(GameObject providerInfo, Collider colliderInfo)
         {
             ON_TRIGGER_EXIT?.Invoke(providerInfo, colliderInfo);
         }

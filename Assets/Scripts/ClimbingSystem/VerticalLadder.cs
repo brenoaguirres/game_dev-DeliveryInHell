@@ -1,7 +1,8 @@
 using System;
 using CBPXL.InspectionSystem;
-using CBPXL.InteractSystem;
+using System.Collections.Generic;
 using UnityEngine;
+using CBPXL.Utils;
 
 namespace CBPXL.ClimbingSystem
 {
@@ -17,6 +18,9 @@ namespace CBPXL.ClimbingSystem
         [SerializeField] private Transform _climberPosition;
         [SerializeField] private GameObject _player;
 
+        [Space(2)]
+        [Header("Grab Settings")]
+        [SerializeField] GrabPoints _grabPoints;
         #endregion
 
         #region PROPERTIES
@@ -29,7 +33,10 @@ namespace CBPXL.ClimbingSystem
         #endregion
 
         #region DEFAULT METHODS
-        // need a collision notifier that will pass a list of colliders events, 0 is bottom col, 1 is upper col
+        [SerializeField] private MultipleCollisionManager _collisionManager;
+        #endregion
+
+        #region DEFAULT METHODS
         #endregion
 
         #region CUSTOM METHODS
