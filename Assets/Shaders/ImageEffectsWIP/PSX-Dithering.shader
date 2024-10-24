@@ -1,6 +1,5 @@
 Shader "PSXSub/PSX-Dithering"
 {
-    // May need to change file name to .cginc extension
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
@@ -103,5 +102,4 @@ Shader "PSXSub/PSX-Dithering"
             ENDHLSL
         }
     }
-    FallBack "Diffuse"
 }
