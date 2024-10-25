@@ -1,4 +1,4 @@
-Shader "PSXSub/PSX-Dithering"
+Shader "Hidden/PSX-Dithering"
 {
     Properties
     {
@@ -18,8 +18,8 @@ Shader "PSXSub/PSX-Dithering"
             #pragma vertex vert
             #pragma fragment frag
 
-            #include "HLSLSupport.cginc"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "HLSLSupport.cginc"
 
             float3 _ColorResolution;
             float3 _DitherResolution;

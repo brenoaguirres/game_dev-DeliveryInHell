@@ -1,4 +1,4 @@
-Shader "PSXSub/PSX-PostProcess-Accurate"
+Shader "Hidden/PSX-PostProcess-Accurate"
 {
 	Properties
 	{
@@ -19,8 +19,8 @@ Shader "PSXSub/PSX-PostProcess-Accurate"
 			#pragma vertex vert
 			#pragma fragment frag
 
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "HLSLSupport.cginc"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
 			sampler2D _MainTex;
 			float _DitheringScale;

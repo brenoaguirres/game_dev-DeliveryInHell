@@ -16,7 +16,7 @@
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma geometry geom
             #pragma fragment frag
@@ -24,13 +24,14 @@
             #pragma multi_compile PSX_TRIANGLE_SORT_OFF PSX_TRIANGLE_SORT_CENTER_Z PSX_TRIANGLE_SORT_CLOSEST_Z PSX_TRIANGLE_SORT_CENTER_VIEWDIST PSX_TRIANGLE_SORT_CLOSEST_VIEWDIST PSX_TRIANGLE_SORT_CUSTOM
 
             #include "UnityCG.cginc"
-            #include "PSX-Utils.cginc"
+            #include "HLSLSupport.cginc"
+            #include "PSX-Utils.hlsl"
 
             #define PSX_CUTOUT_VAL _Cutoff
             float _Cutoff;
-            #include "PSX-ShaderSrc.cginc"
+            #include "PSX-ShaderSrc.hlsl"
 
-            ENDCG
+            ENDHLSL
         }
     }
         Fallback "PSX/Lite/Unlit Cutout"

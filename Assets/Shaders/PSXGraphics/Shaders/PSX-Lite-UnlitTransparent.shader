@@ -6,7 +6,8 @@
         _MainTex("Texture", 2D) = "white" {}
         _ObjectDithering("Per-Object Dithering Enable", Range(0,1)) = 1
     }
-        SubShader
+
+    SubShader
     {
         Tags {"RenderType" = "Transparent" "Queue" = "Transparent"}
         ZWrite Off
@@ -15,19 +16,21 @@
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_fog
 
             #define PSX_TRIANGLE_SORT_OFF
             #include "UnityCG.cginc"
-            #include "PSX-Utils.cginc"
+            #include "HLSLSupport.cginc"
 
-            #include "PSX-ShaderSrc-Lite.cginc"
+            #include "PSX-Utils.hlsl"
+            #include "PSX-ShaderSrc-Lite.hlsl"
 
-            ENDCG
+            ENDHLSL
         }
     }
-        Fallback "Unlit/Color"
+    
+    Fallback "Unlit/Color"
 }

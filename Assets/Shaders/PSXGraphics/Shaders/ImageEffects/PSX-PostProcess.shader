@@ -1,4 +1,4 @@
-Shader "PSXSub/PSX-PostProcess"
+Shader "Hidden/PSX-PostProcess"
 {
 	Properties
 	{
@@ -19,8 +19,8 @@ Shader "PSXSub/PSX-PostProcess"
 			#pragma vertex vert
 			#pragma fragment frag
 
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "HLSLSupport.cginc"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
 			float3 _ColorResolution;
 			float3 _DitherResolution;

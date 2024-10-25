@@ -21,7 +21,7 @@
 		Pass
 		{
 			Tags { "LightMode" = "VertexLM" }
-			CGPROGRAM
+			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile_fog
@@ -29,7 +29,9 @@
 
 			#define PSX_TRIANGLE_SORT_OFF
 			#include "UnityCG.cginc"
-			#include "PSX-Utils.cginc"
+            #include "HLSLSupport.cginc"
+
+			#include "PSX-Utils.hlsl"
 
 			samplerCUBE _Cubemap;
 			sampler2D _ReflectionMap;
@@ -41,22 +43,24 @@
 			#define PSX_CUBEMAP_COLOR _CubemapColor
 			#define PSX_CUTOUT_VAL _Cutoff
 			
-			#include "PSX-ShaderSrc-lite.cginc"
+			#include "PSX-ShaderSrc-lite.hlsl"
 
-		ENDCG
+			ENDHLSL
 		}
 
 		Pass
 		{
 			Tags { "LightMode" = "Vertex" }
-			CGPROGRAM
+			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile_fog
             #pragma multi_compile __ PSX_ENABLE_CUSTOM_VERTEX_LIGHTING
 
 			#include "UnityCG.cginc"
-			#include "PSX-Utils.cginc"
+            #include "HLSLSupport.cginc"
+
+			#include "PSX-Utils.hlsl"
 
 			samplerCUBE _Cubemap;
 			sampler2D _ReflectionMap;
@@ -68,10 +72,11 @@
 			#define PSX_CUBEMAP_COLOR _CubemapColor
 			#define PSX_CUTOUT_VAL _Cutoff
 			
-			#include "PSX-ShaderSrc-lite.cginc"
+			#include "PSX-ShaderSrc-lite.hlsl"
 
-			ENDCG
+			ENDHLSL
 		}
 	}
-		Fallback "PSX/Lite/Unlit Transparent"
+	
+	Fallback "PSX/Lite/Unlit Transparent"
 }

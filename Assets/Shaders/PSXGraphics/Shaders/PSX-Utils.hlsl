@@ -11,7 +11,6 @@ Shader Customization
 */
 
 //Globals set by PSXShaderManager.cs
-#include "Lighting.cginc"
 
 float _PSX_GridSize;
 float _PSX_DepthDebug;

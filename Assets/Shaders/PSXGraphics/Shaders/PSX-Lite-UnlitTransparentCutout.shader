@@ -7,7 +7,8 @@
         _Cutoff("Alpha cutoff", Range(0,1)) = 0.1
         _ObjectDithering("Per-Object Dithering Enable", Range(0,1)) = 1
     }
-        SubShader
+
+    SubShader
     {
         Tags {"RenderType" = "Opaque" }
         ZWrite On
@@ -15,21 +16,24 @@
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_fog
 
             #define PSX_TRIANGLE_SORT_OFF
             #include "UnityCG.cginc"
-            #include "PSX-Utils.cginc"
+            #include "HLSLSupport.cginc"
+
+            #include "PSX-Utils.hlsl"
 
             #define PSX_CUTOUT_VAL _Cutoff
             float _Cutoff;
-            #include "PSX-ShaderSrc-Lite.cginc"
+            #include "PSX-ShaderSrc-Lite.hlsl"
 
-            ENDCG
+            ENDHLSL
         }
     }
-        Fallback "Unlit/Color"
+    
+    Fallback "Unlit/Color"
 }

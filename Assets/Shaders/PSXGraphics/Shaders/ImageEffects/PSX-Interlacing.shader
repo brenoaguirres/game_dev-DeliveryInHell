@@ -1,4 +1,4 @@
-Shader "PSXSub/PSX-Interlacing"
+Shader "Hidden/PSX-Interlacing"
 {
     Properties
     {
@@ -18,8 +18,8 @@ Shader "PSXSub/PSX-Interlacing"
             #pragma vertex vert
             #pragma fragment frag
 
-            #include "HLSLSupport.cginc"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "HLSLSupport.cginc"
 
             sampler2D _MainTex;
             sampler2D _PreviousFrame;

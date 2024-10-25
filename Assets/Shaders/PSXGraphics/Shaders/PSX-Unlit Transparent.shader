@@ -6,7 +6,8 @@
         _MainTex("Texture", 2D) = "white" {}
         _CustomDepthOffset("Custom Depth Offset", Float) = 0
     }
-        SubShader
+
+    SubShader
     {
         Tags {"RenderType" = "Transparent" "Queue" = "Transparent"}
         ZWrite Off
@@ -15,7 +16,7 @@
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma geometry geom
             #pragma fragment frag
@@ -24,11 +25,12 @@
             #pragma multi_compile __ PSX_ENABLE_CUSTOM_VERTEX_LIGHTING
 
             #include "UnityCG.cginc"
-            #include "PSX-Utils.cginc"
+            #include "HLSLSupport.cginc"
+            #include "PSX-Utils.hlsl"
 
-            #include "PSX-ShaderSrc.cginc"
+            #include "PSX-ShaderSrc.hlsl"
 
-            ENDCG
+            ENDHLSL
         }
     }
         Fallback "Unlit/Color"

@@ -13,27 +13,34 @@
         _FlatShading("Flat Shading", Range(0,1)) = 0
         _CustomDepthOffset("Custom Depth Offset", Float) = 0
     }
-        SubShader
+
+    SubShader
     {
-        Tags {"RenderType" = "Opaque" }
+        Tags 
+        {
+                "RenderPipeline" = "UniversalRenderPipeline"
+                "RenderType" = "Opaque" 
+                "LightMode" = "UniversalForward"
+        }
         ZWrite On
         LOD 100
 		
 		//Vertex lighting requires two passes to be defined. One used with lightmaps and one without.
         Pass
         {
-            Tags { "LightMode" = "VertexLM" }
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma geometry geom
             #pragma fragment frag
-            #pragma multi_compile_fog
             #pragma multi_compile_geometry __ PSX_ENABLE_CUSTOM_VERTEX_LIGHTING
             #pragma multi_compile_geometry __ PSX_FLAT_SHADING_MODE_CENTER
             #pragma multi_compile PSX_TRIANGLE_SORT_OFF PSX_TRIANGLE_SORT_CENTER_Z PSX_TRIANGLE_SORT_CLOSEST_Z PSX_TRIANGLE_SORT_CENTER_VIEWDIST PSX_TRIANGLE_SORT_CLOSEST_VIEWDIST PSX_TRIANGLE_SORT_CUSTOM
 
-            #include "UnityCG.cginc"
-            #include "PSX-Utils.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "HLSLSupport.cginc"
+
+            #include "PSX-Utils.hlsl"
 
 			samplerCUBE _Cubemap;
             sampler2D _ReflectionMap;
@@ -43,25 +50,26 @@
 			#define PSX_CUBEMAP _Cubemap
 			#define PSX_CUBEMAP_COLOR _CubemapColor
 			
-            #include "PSX-ShaderSrc.cginc"
+            #include "PSX-ShaderSrc.hlsl"
 
-        ENDCG
+            ENDHLSL
         }
 
         Pass
         {
-            Tags { "LightMode" = "Vertex" }
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma geometry geom
             #pragma fragment frag
-            #pragma multi_compile_fog
             #pragma multi_compile_geometry __ PSX_ENABLE_CUSTOM_VERTEX_LIGHTING
             #pragma multi_compile_geometry __ PSX_FLAT_SHADING_MODE_CENTER
             #pragma multi_compile PSX_TRIANGLE_SORT_OFF PSX_TRIANGLE_SORT_CENTER_Z PSX_TRIANGLE_SORT_CLOSEST_Z PSX_TRIANGLE_SORT_CENTER_VIEWDIST PSX_TRIANGLE_SORT_CLOSEST_VIEWDIST PSX_TRIANGLE_SORT_CUSTOM
 
-            #include "UnityCG.cginc"
-            #include "PSX-Utils.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "HLSLSupport.cginc"
+
+            #include "PSX-Utils.hlsl"
 
 			samplerCUBE _Cubemap;
             sampler2D _ReflectionMap;
@@ -71,9 +79,10 @@
 			#define PSX_CUBEMAP _Cubemap
 			#define PSX_CUBEMAP_COLOR _CubemapColor
 			
-            #include "PSX-ShaderSrc.cginc"
-        ENDCG
+            #include "PSX-ShaderSrc.hlsl"
+            ENDHLSL
         }
     }
-        Fallback "PSX/Lite/Vertex Lit"
+    
+    Fallback "PSX/Lite/Vertex Lit"
 }

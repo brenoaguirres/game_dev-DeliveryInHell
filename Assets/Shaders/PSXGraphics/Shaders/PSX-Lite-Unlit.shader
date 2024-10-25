@@ -15,7 +15,7 @@
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #pragma multi_compile_fog
@@ -23,12 +23,11 @@
             #define PSX_TRIANGLE_SORT_OFF
 
             #include "UnityCG.cginc"
-            //#include "HLSLSupport.cginc"
-            //#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "HLSLSupport.cginc"
 
-            #include "PSX-Utils.cginc"
-            #include "PSX-ShaderSrc-Lite.cginc"
-            ENDCG
+            #include "PSX-Utils.hlsl"
+            #include "PSX-ShaderSrc-Lite.hlsl"
+            ENDHLSL
         }
     }
     
