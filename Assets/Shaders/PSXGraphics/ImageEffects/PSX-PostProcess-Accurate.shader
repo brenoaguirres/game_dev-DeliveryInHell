@@ -1,21 +1,26 @@
-﻿Shader "Hidden/PSX-PostProcess-Accurate"
+Shader "PSXSub/PSX-PostProcess-Accurate"
 {
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
 	}
-		SubShader
-	{
-		// No culling or depth
-		Cull Off ZWrite Off ZTest Always
 
+	SubShader
+	{
 		Pass
 		{
-			CGPROGRAM
+			Cull Off ZWrite Off ZTest Always
+			Tags
+			{
+				"RenderPipeline" = "UniversalRenderPipeline"
+			}
+
+			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 
-			#include "UnityCG.cginc"
+			#include "HLSLSupport.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
 			sampler2D _MainTex;
 			float _DitheringScale;
@@ -38,7 +43,7 @@
 			{
 				v2f o;
 				o.uv = uv;
-				outpos = UnityObjectToClipPos(vertex);
+				outpos = TransformObjectToHClip(vertex);
 				return o;
 			}
 
@@ -55,7 +60,7 @@
 				return ditheringMatrix4x4[pixelPosition.x % 4 + (pixelPosition.y % 4) * 4];
 			}
 
-			fixed4 PSX_DitherColor(float4 color, int2 pixelPosition)
+			half4 PSX_DitherColor(float4 color, int2 pixelPosition)
 			{
 				int4 col255 = round(color * 255) + PSX_GetDitherOffset(pixelPosition.xy);
 				col255 = col255 >> 3;
@@ -64,12 +69,12 @@
 			}
 
 
-			fixed4 frag(v2f i, UNITY_VPOS_TYPE screenPos : VPOS) : SV_Target
+			half4 frag(v2f i, UNITY_VPOS_TYPE screenPos : VPOS) : SV_Target
 			{
-				fixed4 col = tex2D(_MainTex, i.uv);
+				half4 col = tex2D(_MainTex, i.uv);
 				return PSX_DitherColor(col, floor(screenPos.xy * _DitheringScale));
 			}
-			ENDCG
+			ENDHLSL
 		}
 	}
 }

@@ -13,7 +13,6 @@ Shader "PSXSub/PSX-Interlacing"
             {
                 "RenderPipeline"="UniversalRenderPipeline"
             }
-            LOD 100
 
             HLSLPROGRAM
             #pragma vertex vert

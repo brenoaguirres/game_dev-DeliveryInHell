@@ -13,7 +13,6 @@ Shader "PSXSub/PSX-Dithering"
             {
                 "RenderPipeline"="UniversalRenderPipeline"
             }
-            LOD 100
 
             HLSLPROGRAM
             #pragma vertex vert
